@@ -1,11 +1,23 @@
+require("dotenv").config();
 const express = require("express");
-const app = express();
-const port = 3000;
+const server = express();
+const { PORT } = process.env;
 
-app.get("/", (req, res) => {
-  res.send("Hello World!.cambio el titulo");
+server.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Credentials", "true");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
+  next();
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+server.use(express.json());
+
+// server.use("/rickandmorty");
+
+server.listen(PORT, () => {
+  console.log("Servidor funcionando en: " + PORT);
 });
