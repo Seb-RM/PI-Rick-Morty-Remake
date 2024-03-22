@@ -70,7 +70,7 @@ const loginUser = async ({ email, password }) => {
 
         return {
             success: true,
-            message: "Inicio de sesión exitoso.",
+            message: "Usuario creado con éxito.",
             userId: findUser.dataValues.id,
         };
 

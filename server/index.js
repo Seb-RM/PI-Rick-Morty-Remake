@@ -4,6 +4,8 @@ const server = express();
 const { PORT } = process.env;
 const { mainRouter } = require("./src/routes/index.js");
 
+const { conn, User } = require("./src/DB_connection.js");
+
 server.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Credentials", "true");
@@ -19,6 +21,8 @@ server.use(express.json());
 
 server.use("/rickandmorty", mainRouter);
 
-server.listen(PORT, () => {
-  console.log("Servidor funcionando en: " + PORT);
+conn.sync({ force: true }).then(() => {
+  server.listen(PORT, () => {
+    console.log("Servidor funcionando en: " + PORT);
+  });
 });

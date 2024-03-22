@@ -1,4 +1,4 @@
-const { createUser, loginUser} = require("../controllers/usersControllers.js");
+const { createUser, loginUser, getUserById} = require("../controllers/usersControllers.js");
 
 const createUserHandler = async (req, res) => {
     const { email, password } = req.body;
@@ -41,7 +41,7 @@ const loginUserHandler = async (req, res) => {
 const getUserByIdHandler = async (req, res) => {
     const { id } = req.params;
     try {
-        const { success, message, existingUser } = await getOwnerById(id);
+        const { success, message, existingUser } = await getUserById(id);
         if (success) {
             res.status(200).json({ success, message, existingUser });
         } else {
