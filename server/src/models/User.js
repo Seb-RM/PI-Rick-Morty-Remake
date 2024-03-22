@@ -6,7 +6,7 @@ module.exports = (sequelize) => {
       "User",
       {
          id: {
-            type: DataTypes.INTEGER,/// si no se agrega sequelize agrega el id automáticamente
+            type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
          },
