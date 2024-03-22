@@ -1,6 +1,6 @@
 const { User } = require("../DB_connection");
 
-const createUserController = async (
+const createUser = async (
     email,
     password
 ) => {
@@ -29,7 +29,7 @@ const createUserController = async (
         return {
             success: true,
             message: "Inicio de sesión exitoso.",
-            userId: findUser.dataValues.id,
+            createdUser
         };
 
     } catch (error) {
@@ -84,4 +84,25 @@ const loginUser = async ({ email, password }) => {
     }
 };
 
-module.exports = { createUserController, loginUser };
+const getUserById = async (id) => {
+    try {
+        
+    } catch (error) {
+        
+    }
+    const existingUser = await User.findByPk(id);
+
+    if (!existingUser) {
+        return {
+            success: false,
+            message: `No existe un owner con este id: ${id}.`,
+        };
+    }
+    return {
+        success: true,
+        message: "Usuario encontrado.",
+        existingUser
+    };
+};
+
+module.exports = { createUser, loginUser, getUserById };
