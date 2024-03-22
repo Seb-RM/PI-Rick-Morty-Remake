@@ -28,8 +28,8 @@ const createUser = async (
 
         return {
             success: true,
-            message: "Inicio de sesión exitoso.",
-            createdUser
+            message: "Usuario creado con éxito.",
+            createdUser,
         };
 
     } catch (error) {
@@ -70,7 +70,7 @@ const loginUser = async ({ email, password }) => {
 
         return {
             success: true,
-            message: "Usuario creado con éxito.",
+            message: "Inicio de sesión exitoso.",
             userId: findUser.dataValues.id,
         };
 
