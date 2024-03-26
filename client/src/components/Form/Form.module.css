@@ -1,0 +1,223 @@
+@font-face{
+    font-family:  Wubba Lubba Dub Dub;
+    src: url('../../fonts/WubbaLubbaDubDub.otf');
+}
+
+*{
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box;
+}
+
+.body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url(../../img/background-image.png);
+    background-size: cover;
+}
+
+.section {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    flex-wrap: wrap;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.section::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg,rgba(0, 250, 0, 0.7),rgba(0, 0, 0, 0.3),rgba(0, 250, 0, 0.7));
+    background-size: 600% 600%;
+    animation: animate 15s ease infinite;
+}
+@keyframes animate {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.section span {
+    position: relative;
+    display: block;
+    width: calc(6.25vw - 2px);
+    height: calc(6.25vw - 2px);
+    background: rgba(24, 24, 24, 0.6);
+    z-index: 2;
+    transition: 1.5s;
+}
+.section span:hover {
+    background: #0f0;
+    transition: 0s;
+}
+
+.title{
+    position: absolute;
+    margin-top: 1rem !important;
+    top: 60px; 
+    z-index: 1001;
+    text-align: center;
+    color: #a9f3fd;
+    text-shadow: #97ce4c 3px 3px 4px;
+    font-family: Wubba Lubba Dub Dub;
+}
+
+.title h1{
+    font-size: 3rem;
+}
+
+.title h2{
+    font-size: 1.5rem;
+}
+
+.section .signin{
+    position: absolute;
+    margin-top: 10rem !important;
+    width: 400px;
+    background: #222;  
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px !important;
+    border-radius: 4px;
+    box-shadow: 0 15px 35px rgba(0,0,0,9);
+}
+
+.section .signin .content {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.section .signin .content h2 {
+    font-size: 2em;
+    color: #0f0;
+    text-transform: uppercase;
+}
+
+.section .signin .content .form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+} 
+
+.section .signin .content .form h4 {
+    color: #fff;
+    position: relative;
+    margin-bottom: 3px !important;
+}
+
+.section .signin .content .form .inputbox{
+    position: relative;
+    width: 100%;
+    margin-top: 2px !important;
+    margin-bottom: 2px !important;
+
+}
+input::placeholder {
+    color: rgb(32, 219, 236);
+    padding-bottom: 5px !important;
+    opacity: 1; 
+}
+
+.section .signin .content .form p{
+    color:#e10101;
+}
+.section .signin .content .form .inputbox input {
+    position: relative;
+    width: 100%;
+    background: #333;
+    text-align: center;
+    border: none;
+    outline: none;
+    padding: 20px 10px 7.5px !important;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: 500;
+    font-size: 1em;
+}
+
+.section .signin .content .form .inputbox i {
+    position: absolute;
+    left: 0;
+    top: 35px;
+    padding: 5px 10px !important;
+    font-style: normal;
+    color: #aaa;
+    transition: 0.5s;
+    pointer-events: none;
+}
+
+.signin .content .form .inputbox input:focus ~ i,
+.signin .content .form .inputbox input:valid ~ i{
+    transform: translateY(-7.5px);
+    font-size: 0.8em;
+    color: rgb(60, 143, 192);
+}
+
+.signin .content .form .inputbox input[type="submit"] {
+    padding: 10px !important;
+    margin-top: 25px !important;
+    background: #0f0;
+    color: #000;
+    font-weight: 600;
+    font-size: 1.35em;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+}
+
+input[type="submit"]:active{
+    opacity: 0.6;
+}
+
+@media (max-width: 900px) {
+    .section span 
+    {
+        width: calc(10vw - 2px);
+        height: calc(10vw - 2px);
+    }
+}
+
+@media (max-width: 600px) {
+    .section span 
+    {
+        width: calc(20vw - 2px);
+        height: calc(20vw - 2px);
+    }
+}
+
+@media screen and (min-width: 768px) {
+    
+    .title h1 {
+    font-size: 5rem;
+    }
+
+    .title h2 {
+        font-size: 3.5rem;
+    }
+
+    .section .signin{
+        margin-top: 10rem !important;
+    }
+}
