@@ -28,7 +28,7 @@ function App() {
     if (!access && pathname !== "/") {
       navigate("/");
     }
-  }, [access, pathname]);
+  }, [access, pathname, navigate]);
 
   
   const login = async (userData) => {
