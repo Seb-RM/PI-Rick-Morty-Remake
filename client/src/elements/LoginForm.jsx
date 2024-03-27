@@ -30,7 +30,7 @@ const LoginForm = ({ login }) => {
         <form className={styles.form}>
             <div className={styles.inputbox}>
             <label>
-                <h4>Email:</h4>
+                <h4>Correo Electrónico</h4>
             </label>
             <input
                 type="email"
@@ -51,7 +51,7 @@ const LoginForm = ({ login }) => {
             </div>
             <div className={styles.inputbox}>
             <label>
-                <h4>Password:</h4>
+                <h4>Contraseña:</h4>
             </label>
             <input
                 type="password"
