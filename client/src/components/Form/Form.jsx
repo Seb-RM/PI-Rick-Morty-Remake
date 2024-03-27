@@ -1,30 +1,22 @@
 import { useState } from "react";
-import validation from "../../utils/validation.js";
+
+import LoginForm from "../../elements/LoginForm";
+import RegistrationForm from "../../elements/RegistrationForm";
 import styles from "./Form.module.css";
 import PropTypes from "prop-types";
 
 const Form = ({ login }) => {
-  const [errors, setErrors] = useState({});
 
-  const [userData, setUserData] = useState({
-    email: "",
-    password: "",
-  });
+  const [isLoginView, setIsLoginView] = useState(true);
 
-  const handleChange = (event) => {
-    setUserData({
-      ...userData,
-      [event.target.name]: event.target.value,
-    });
-    setErrors(
-      validation({ ...userData, [event.target.name]: event.target.value })
-    );
+  const toggleView = () => {
+    setIsLoginView(!isLoginView);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    login(userData);
-  };
+    const handleClick = () => {
+      toggleView();
+    };
+
   return (
     <div className={styles.body}>
       <div className={styles.section}>
@@ -96,56 +88,32 @@ const Form = ({ login }) => {
           <h2>APP</h2>
         </div>
         <div className={styles.signin}>
-          <div className={styles.content}>
-            <h2>Sign In</h2>
-            <div className={styles.form}>
-              <form>
-                <div className={styles.inputbox}>
-                  <label>
-                    <h4>Email:</h4>
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    id="email"
-                    value={userData.email}
-                    onChange={handleChange}
-                    placeholder="Ingresa tu dirección de correo."
-                  />
-                  {/* <i>ejemplo@gmail.com</i> */}
-                  {errors.e1 ? (
-                    <p className={styles.errors}>{errors.e1}</p>
-                  ) : errors.e2 ? (
-                    <p className={styles.errors}>{errors.e2}</p>
-                  ) : (
-                    <p className={styles.errors}>{errors.e3}</p>
-                  )}
-                </div>
-                <div className={styles.inputbox}>
-                  <label>
-                    <h4>Password:</h4>
-                  </label>
-                  <input
-                    type="password"
-                    name="password"
-                    id="password"
-                    value={userData.password}
-                    onChange={handleChange}
-                    placeholder="Ingresa tu contraseña."
-                  />
-                  {/* <i>Password1</i> */}
-                  {errors.p1 ? (
-                    <p className={styles.errors}>{errors.p1}</p>
-                  ) : (
-                    <p className={styles.errors}>{errors.p2}</p>
-                  )}
-                </div>
-                <div className={styles.inputbox}>
-                  {/* <button type="submit">Submit</button> */}
-                  <input type="submit" value="Submit" onClick={handleSubmit} />
-                </div>
-              </form>
-            </div>
+          <div className={styles.formOptions}>
+            <h2
+              className={
+                isLoginView
+                  ? `${styles.active} ${styles.firstChild}`
+                  : styles.loginInactive
+              }
+              onClick={handleClick}>
+              Login
+            </h2>
+            <h2
+              className={
+                !isLoginView
+                  ? `${styles.active} ${styles.lastChild}`
+                  : styles.signupInactive
+              }
+              onClick={handleClick}>
+              Sign Up
+            </h2>
+          </div>
+          <div>
+            {isLoginView ? (
+              <LoginForm login={login} toggleView={toggleView} />
+            ) : (
+              <RegistrationForm toggleView={toggleView} />
+            )}
           </div>
         </div>
       </div>

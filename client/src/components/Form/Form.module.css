@@ -87,11 +87,54 @@
     background: #222;  
     z-index: 1000;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 40px !important;
     border-radius: 4px;
     box-shadow: 0 15px 35px rgba(0,0,0,9);
+}
+
+.formOptions {
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+}
+
+.formOptions h2 {
+    position: relative;
+    padding: 10px 20px;
+    font-size: 2em;
+    text-transform: uppercase;
+}
+
+.formOptions h2.active {
+    color: #0f0;
+    border-top: 2px solid #0f0;
+}
+
+.formOptions h2.signupInactive {
+    -webkit-text-stroke: 0.27px #0f0;
+    border-bottom: 2px solid #0f0;
+    border-bottom-left-radius: 33px;
+    cursor: pointer;
+    box-shadow: 0px -15px 10px -15px #0f0 inset;
+}
+
+.formOptions h2.loginInactive {
+    -webkit-text-stroke: 0.27px #0f0;
+    border-bottom: 2px solid #0f0;
+    border-bottom-right-radius: 33px;
+    cursor: pointer;
+    box-shadow: 0px -15px 10px -15px #0f0 inset;
+}
+
+.formOptions h2:first-child {
+    border-top-right-radius: 33px; 
+}
+
+.formOptions h2:last-child {
+    border-top-left-radius: 33px;
 }
 
 .section .signin .content {
@@ -102,12 +145,6 @@
     align-items: center;
     flex-direction: column;
     gap: 40px;
-}
-
-.section .signin .content h2 {
-    font-size: 2em;
-    color: #0f0;
-    text-transform: uppercase;
 }
 
 .section .signin .content .form {
