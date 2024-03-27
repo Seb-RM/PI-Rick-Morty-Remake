@@ -27,9 +27,7 @@ const LoginForm = ({ login }) => {
         login(userData);
     };
     return (
-    <div className={styles.content}>
-        <div className={styles.form}>
-        <form>
+        <form className={styles.form}>
             <div className={styles.inputbox}>
             <label>
                 <h4>Email:</h4>
@@ -75,8 +73,6 @@ const LoginForm = ({ login }) => {
             <input type="submit" value="Ingresar" onClick={handleSubmit} />
             </div>
         </form>
-        </div>
-    </div>
     );
 };
 

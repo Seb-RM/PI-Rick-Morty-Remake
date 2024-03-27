@@ -63,8 +63,8 @@
 .title{
     position: absolute;
     pointer-events: none;
-    margin-top: 1rem !important;
-    top: 60px; 
+    margin-top: 1rem;
+    top: 35px; 
     z-index: 1001;
     text-align: center;
     color: #a9f3fd;
@@ -137,48 +137,41 @@
     border-top-left-radius: 33px;
 }
 
-.section .signin .content {
-    position: relative;
+.section .signin .form {
+    margin-top: 25px;
     width: 100%;
+    background: #a9f3fd;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    flex-direction: column;
-    gap: 40px;
-}
-
-.section .signin .content .form {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
     gap: 25px;
 } 
 
-.section .signin .content .form h4 {
+.section .signin .form h4 {
     color: #fff;
     position: relative;
-    margin-bottom: 3px !important;
+    margin-bottom: 3px;
 }
 
-.section .signin .content .form .inputbox{
+.section .signin .form .inputbox{
     position: relative;
-    width: 100%;
-    margin-top: 2px !important;
-    margin-bottom: 2px !important;
+    width: 350px;
+    margin-top: 2px;
+    margin-bottom: 2px;
 
 }
 input::placeholder {
-    color: rgb(32, 219, 236);
-    padding-bottom: 5px !important;
+    color: rgb(141, 225, 233);
+    padding-bottom: 5px;
     opacity: 1; 
 }
 
-.section .signin .content .form p{
+.section .signin .form p{
     color:#e10101;
 }
-.section .signin .content .form .inputbox input {
+.section .signin .form .inputbox input {
     position: relative;
-    width: 100%;
+    width: 320px;
     background: #333;
     text-align: center;
     border: none;
@@ -190,7 +183,7 @@ input::placeholder {
     font-size: 1em;
 }
 
-.section .signin .content .form .inputbox i {
+.section .signin .form .inputbox i {
     position: absolute;
     left: 0;
     top: 35px;
@@ -201,14 +194,14 @@ input::placeholder {
     pointer-events: none;
 }
 
-.signin .content .form .inputbox input:focus ~ i,
-.signin .content .form .inputbox input:valid ~ i{
+.signin .form .inputbox input:focus ~ i,
+.signin .form .inputbox input:valid ~ i{
     transform: translateY(-7.5px);
     font-size: 0.8em;
     color: rgb(60, 143, 192);
 }
 
-.signin .content .form .inputbox input[type="submit"] {
+.signin .form .inputbox input[type="submit"] {
     padding: 10px !important;
     margin-top: 25px !important;
     background: #0f0;
