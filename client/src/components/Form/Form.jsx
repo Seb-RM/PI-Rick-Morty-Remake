@@ -108,7 +108,7 @@ const Form = ({ login }) => {
               Sign Up
             </h2>
           </div>
-          <div>
+          <div className={styles.formContainer}>
             {isLoginView ? (
               <LoginForm login={login} toggleView={toggleView} />
             ) : (

@@ -91,17 +91,19 @@
     justify-content: center;
     align-items: center;
     padding: 40px !important;
-    border-radius: 4px;
+    border-radius: 5px;
     box-shadow: 0 15px 35px rgba(0,0,0,9);
 }
 
 .formOptions {
+    width: 350px;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     position: relative;
 }
 
 .formOptions h2 {
+    width: 100%;
     position: relative;
     padding: 10px 20px;
     font-size: 2em;
@@ -111,45 +113,60 @@
 .formOptions h2.active {
     color: #0f0;
     border-top: 2px solid #0f0;
+    box-shadow: 0px -6px 15px -12px #0f0;
 }
 
 .formOptions h2.signupInactive {
     -webkit-text-stroke: 0.27px #0f0;
     border-bottom: 2px solid #0f0;
-    border-bottom-left-radius: 33px;
+    border-bottom-left-radius: 19px;
     cursor: pointer;
-    box-shadow: 0px -15px 10px -15px #0f0 inset;
+    box-shadow: 7px -15px 10px -15px #0f0 inset;
 }
 
 .formOptions h2.loginInactive {
     -webkit-text-stroke: 0.27px #0f0;
     border-bottom: 2px solid #0f0;
-    border-bottom-right-radius: 33px;
+    border-bottom-right-radius: 19px;
     cursor: pointer;
-    box-shadow: 0px -15px 10px -15px #0f0 inset;
+    box-shadow: -7px -15px 10px -15px #0f0 inset;
 }
 
 .formOptions h2:first-child {
-    border-top-right-radius: 33px; 
+    border-top-right-radius: 19px;
+    border-top-left-radius: 13px;
 }
 
 .formOptions h2:last-child {
-    border-top-left-radius: 33px;
+    border-top-left-radius: 19px;
+    border-top-right-radius: 13px;
 }
 
+.section .signin .formContainer {
+    border-radius: 5px;
+    box-shadow: 0px 18px 18px -12px #0f0;
+}
 .section .signin .form {
     margin-top: 25px;
     width: 100%;
-    background: #a9f3fd;
+    padding: 5px 0 25px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    gap: 25px;
+    align-content: center;
+    box-shadow: 0px 18px 15px -15px #0f0;
+    border-radius: 8px;
 } 
+
+.section .signin .form label{
+    width: 100%;
+}
 
 .section .signin .form h4 {
     color: #fff;
-    position: relative;
+    width: 100%;
+    margin-left: 5px;
     margin-bottom: 3px;
 }
 
@@ -158,6 +175,10 @@
     width: 350px;
     margin-top: 2px;
     margin-bottom: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
 
 }
 input::placeholder {
