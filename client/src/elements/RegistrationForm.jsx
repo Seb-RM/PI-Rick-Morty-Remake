@@ -5,6 +5,7 @@ import styles from "../components/Form/Form.module.css";
 
 const RegistrationForm = () => {
     const [errors, setErrors] = useState({});
+    const [showPassword, setShowPassword] = useState(false);
 
     const [userData, setUserData] = useState({
         email: "",
@@ -71,9 +72,9 @@ const RegistrationForm = () => {
                     <h4>Repetir Contraseña:</h4>
                 </label>
                 <input
-                    type="password"
-                    name="password"
-                    id="password"
+                    type={showPassword ? "text" : "password"}
+                    name="RePassword"
+                    id="RePassword"
                     value={userData.password}
                     onChange={handleChange}
                     placeholder="Ingresa nuevamente tu contraseña."
