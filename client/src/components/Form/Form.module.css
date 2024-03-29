@@ -184,6 +184,15 @@ input::placeholder {
     opacity: 1; 
 }
 
+.showPasswordIcon{
+    align-self: flex-end;
+    height: 13px;
+    position: relative;
+    display: inline;
+    transform: translate(-50%, -32px);
+    cursor: pointer;
+}
+
 .section .signin .form p{
     color:#e10101;
 }

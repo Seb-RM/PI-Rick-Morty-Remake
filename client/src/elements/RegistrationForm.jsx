@@ -2,10 +2,12 @@ import { useState } from "react";
 import validation from "../utils/validation.js";
 
 import styles from "../components/Form/Form.module.css";
+import "boxicons";
 
 const RegistrationForm = () => {
     const [errors, setErrors] = useState({});
     const [showPassword, setShowPassword] = useState(false);
+    const [showRePassword, setShowRePassword] = useState(false);
 
     const [userData, setUserData] = useState({
         email: "",
@@ -52,14 +54,33 @@ const RegistrationForm = () => {
                 <label>
                     <h4>Contraseña:</h4>
                 </label>
+                <>
                 <input
-                    type="password"
+                    type={showPassword ? "text" : "password"}
                     name="password"
                     id="password"
                     value={userData.password}
                     onChange={handleChange}
                     placeholder="Ingresa tu contraseña."
                 />
+                <div
+                    className={styles.showPasswordIcon}
+                    onClick={() => setShowPassword((prev) => !prev)}>
+                    {showPassword ? (
+                    <box-icon
+                        name="show"
+                        color="rgb(141, 225, 233)"
+                        size="20px"
+                        animation="flashing-hover"></box-icon>
+                    ) : (
+                    <box-icon
+                        name="hide"
+                        color="rgb(141, 225, 233)"
+                        size="20px"
+                        animation="flashing-hover"></box-icon>
+                    )}
+                </div>
+                </>
                 {/* <i>Password1</i> */}
                 {errors.p1 ? (
                     <p className={styles.errors}>{errors.p1}</p>
@@ -71,14 +92,33 @@ const RegistrationForm = () => {
                 <label>
                     <h4>Repetir Contraseña:</h4>
                 </label>
+                <>
                 <input
-                    type={showPassword ? "text" : "password"}
+                    type={showRePassword ? "text" : "password"}
                     name="RePassword"
                     id="RePassword"
                     value={userData.password}
                     onChange={handleChange}
                     placeholder="Ingresa nuevamente tu contraseña."
                 />
+                <div
+                    className={styles.showPasswordIcon}
+                    onClick={() => setShowRePassword((prev) => !prev)}>
+                    {showPassword ? (
+                    <box-icon
+                        name="show"
+                        color="rgb(141, 225, 233)"
+                        size="20px"
+                        animation="flashing-hover"></box-icon>
+                    ) : (
+                    <box-icon
+                        name="hide"
+                        color="rgb(141, 225, 233)"
+                        size="20px"
+                        animation="flashing-hover"></box-icon>
+                    )}
+                </div>
+                </>
                 {/* <i>Password1</i> */}
                 {errors.p1 ? (
                     <p className={styles.errors}>{errors.p1}</p>
