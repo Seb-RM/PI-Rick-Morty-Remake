@@ -187,9 +187,9 @@ input::placeholder {
 .showPasswordIcon{
     align-self: flex-end;
     height: 13px;
-    position: relative;
+    position: absolute;
     display: inline;
-    transform: translate(-50%, -32px);
+    transform: translate(-50%, 30px);
     cursor: pointer;
 }
 

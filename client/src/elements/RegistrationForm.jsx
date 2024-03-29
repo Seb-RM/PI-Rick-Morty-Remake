@@ -12,9 +12,12 @@ const RegistrationForm = () => {
     const [userData, setUserData] = useState({
         email: "",
         password: "",
+        repeatPassword:""
     });
-
+console.log(userData.password)
+console.log(userData.repeatPassword);
     const handleChange = (event) => {
+        console.log(event.target.value)
         setUserData({
         ...userData,
         [event.target.name]: event.target.value,
@@ -83,9 +86,9 @@ const RegistrationForm = () => {
                 </>
                 {/* <i>Password1</i> */}
                 {errors.p1 ? (
-                    <p className={styles.errors}>{errors.p1}</p>
+                <p className={styles.errors}>{errors.p1}</p>
                 ) : (
-                    <p className={styles.errors}>{errors.p2}</p>
+                <p className={styles.errors}>{errors.p2}</p>
                 )}
             </div>
             <div className={styles.inputbox}>
@@ -95,16 +98,16 @@ const RegistrationForm = () => {
                 <>
                 <input
                     type={showRePassword ? "text" : "password"}
-                    name="RePassword"
+                    name="repeatPassword"
                     id="RePassword"
-                    value={userData.password}
+                    value={userData.repeatPassword}
                     onChange={handleChange}
                     placeholder="Ingresa nuevamente tu contraseña."
                 />
                 <div
                     className={styles.showPasswordIcon}
                     onClick={() => setShowRePassword((prev) => !prev)}>
-                    {showPassword ? (
+                    {showRePassword ? (
                     <box-icon
                         name="show"
                         color="rgb(141, 225, 233)"
@@ -120,10 +123,10 @@ const RegistrationForm = () => {
                 </div>
                 </>
                 {/* <i>Password1</i> */}
-                {errors.p1 ? (
-                    <p className={styles.errors}>{errors.p1}</p>
+                {errors.repeatPassword ? (
+                    <p className={styles.errors}>{errors.repeatPassword}</p>
                 ) : (
-                    <p className={styles.errors}>{errors.p2}</p>
+                    <p className={styles.errors}>{errors.repeatPassword}</p>
                 )}
             </div>
             <div className={styles.inputbox}>
