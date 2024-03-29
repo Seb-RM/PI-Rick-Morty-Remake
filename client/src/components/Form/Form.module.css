@@ -246,6 +246,10 @@ input[type="submit"]:active{
 .errors {
     min-height: 19px;
 }
+
+.formMessage {
+    min-height: 19px;
+}
 @media (max-width: 900px) {
     .section span 
     {

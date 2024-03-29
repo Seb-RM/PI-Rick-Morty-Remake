@@ -2,9 +2,6 @@
 export default (data)=> {
     let errors = {};
 
-    console.log(data.password)
-    console.log(data.repeatPassword);
-
     if(!data.email.includes('@')){
         errors.e1 = 'Ingrese un email valido!'
     }
