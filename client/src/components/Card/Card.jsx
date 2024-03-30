@@ -1,4 +1,4 @@
-
+import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 
 import { Link } from "react-router-dom";
@@ -9,17 +9,22 @@ import { useDispatch, useSelector } from "react-redux";
 
 import styles from "./Card.module.css";
 
-const Card = ({
-  id,
-  name,
-  status,
-  species,
-  gender,
-  origin,
+  let card ={
+  id: 1,
+  name: nombre,
+  userId:1,
+}
+
+
+const Card = (
+  {
+  id=1,
+  name="nombre",
   image,
   onClose,
-  userId
-}) => {
+  userId=1,
+}
+) => {
   const dispatch = useDispatch();
   //const favorites = useSelector((state)=> state.myFavorites) otra forma
   const myFavorites = useSelector((state) => state.allCharacters);
@@ -46,8 +51,7 @@ const Card = ({
         setIsFav(true);
       }
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [myFavorites]);
+  }, [myFavorites, id]);
 
   return (
     <div className={styles.cartas}>
@@ -74,13 +78,21 @@ const Card = ({
         <Link to={`/detail/${id}`}>
           <h2>{name}</h2>
         </Link>
-        {/* <h2>Status: {status}</h2>
-      <h2>Especie: {species}</h2>
-      <h2>Género: {gender}</h2>
-      <h2>Origen: {origin}</h2> */}
       </div>
     </div>
   );
+};
+
+Card.propTypes = {
+  id: PropTypes.number,
+  name: PropTypes.string,
+  status: PropTypes.string,
+  species: PropTypes.string,
+  gender: PropTypes.string,
+  origin: PropTypes.string,
+  image: PropTypes.string,
+  onClose: PropTypes.func,
+  userId: PropTypes.number,
 };
 
 export default Card;
