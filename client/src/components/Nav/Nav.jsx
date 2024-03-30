@@ -6,8 +6,10 @@ import styles from "./Nav.module.css";
 import logo from "../../assets/img/logo.png";
 
 const Nav = ({ onSearch, personajeRandom }) => {
+
   const location = useLocation();
   const isHomePage = location.pathname === "/home";
+  
   return (
     <div className={styles.navBar}>
       <div className={styles.contenedorUno}>

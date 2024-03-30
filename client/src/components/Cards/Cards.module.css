@@ -1,17 +1,15 @@
-
-
-/* .backgroundImg {
-    display: inline-flex;
-    margin: 20px  20px  !important;
-    padding: 15px !important;
-    flex-wrap: wrap;
-    width: 1495px;
-    max-width: 1900px;
-    height: 532px;
-    justify-content: center;
-    max-height: 540px;
-    gap: 10px 3px;
-    overflow: auto;
+.backgroundImg {
+    display: flex;
+    margin: 20px  20px;
+    /* padding: 15px !important; */
+    /* flex-wrap: wrap; */
+    /* width: 1495px; */
+    /* max-width: 1900px; */
+    height: 565px;
+    /* justify-content: center; */
+    /* max-height: 540px; */
+    /* gap: 10px 3px; */
+    /* overflow: auto; */
     border-radius: 15px;
     backdrop-filter: blur(3.8px);
     background-image: repeating-linear-gradient(-16deg, #97ce4c, #97ce4c 30px, transparent 30px, transparent 41px, #97ce4c 41px), repeating-linear-gradient(74deg, #97ce4c, #97ce4c 30px, transparent 30px, transparent 41px, #97ce4c 41px), repeating-linear-gradient(164deg, #97ce4c, #97ce4c 30px, transparent 30px, transparent 41px, #97ce4c 41px), repeating-linear-gradient(254deg, #97ce4c, #97ce4c 30px, transparent 30px, transparent 41px, #97ce4c 41px);
@@ -61,4 +59,4 @@ to { background-position: 0 -42.65px, 0 0, 100% 0, -42.65px 100%; }
 .backgroundImg::-webkit-scrollbar {
     display: none;
 }
- */
+
