@@ -3,10 +3,10 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import Form from "./components/Form/Form.jsx";
-// import Nav from "./components/Nav/Nav";
+import Cards from "./components/Cards/Cards.jsx";
+import Nav from "./components/Nav/Nav";
 // import About from "./components/About/About";
 // import Detail from "./components/Detail/Detail";
-// import Cards from "./components/Cards/Cards";
 // import Favorites from "./components/Favorites/Favorites";
 
 import "./App.css";
@@ -19,7 +19,7 @@ function App() {
 
     const [characters, setCharacters] = useState([]);
 
-    const [access, setAccess] = useState(false);
+    const [access, setAccess] = useState(true);
 
     const [userId, setUserId] = useState(0);
 
@@ -89,19 +89,19 @@ function App() {
 
   return (
     <div className={`App ${pathname.slice(1)}`}>
-      {/* {pathname !== "/" && (
+      {pathname !== "/" && (
         <Nav onSearch={onSearch} personajeRandom={personajeRandom} />
-      )} */}
+      )}
 
       <Routes>
         <Route path="/" element={<Form login={login} />} />
-        {/* <Route
+        <Route
           path="/home"
           element={
             <Cards characters={characters} onClose={onClose} userId={userId} />
           }
         />
-        <Route path="/favorites" element={<Favorites />} />
+        {/* <Route path="/favorites" element={<Favorites />} />
         <Route path="/about" element={<About />} />
         <Route
           path="/detail/:id"

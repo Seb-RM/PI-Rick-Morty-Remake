@@ -1,0 +1,64 @@
+
+
+/* .backgroundImg {
+    display: inline-flex;
+    margin: 20px  20px  !important;
+    padding: 15px !important;
+    flex-wrap: wrap;
+    width: 1495px;
+    max-width: 1900px;
+    height: 532px;
+    justify-content: center;
+    max-height: 540px;
+    gap: 10px 3px;
+    overflow: auto;
+    border-radius: 15px;
+    backdrop-filter: blur(3.8px);
+    background-image: repeating-linear-gradient(-16deg, #97ce4c, #97ce4c 30px, transparent 30px, transparent 41px, #97ce4c 41px), repeating-linear-gradient(74deg, #97ce4c, #97ce4c 30px, transparent 30px, transparent 41px, #97ce4c 41px), repeating-linear-gradient(164deg, #97ce4c, #97ce4c 30px, transparent 30px, transparent 41px, #97ce4c 41px), repeating-linear-gradient(254deg, #97ce4c, #97ce4c 30px, transparent 30px, transparent 41px, #97ce4c 41px);
+    background-size: 3px calc(100% + 42.65px), calc(100% + 42.65px) 3px, 3px calc(100% + 42.65px) , calc(100% + 42.65px) 3px;
+    background-position: 0 0, 0 0, 100% 0, 0 100%;
+    background-repeat: no-repeat;
+    animation: borderAnimation 1s infinite linear, pulsate 1.5s infinite alternate;
+    border: 0.3rem double #fff;  
+    box-shadow: 0 0 .2rem #fff,
+                0 0 .2rem #fff,
+                0 0 12 #97ce4c,
+                0 0 0.8rem #97ce4c,
+                0 0 15 #97ce4c,
+                inset 0 0 1.3rem #97ce4c 
+}
+
+@keyframes borderAnimation {
+from { background-position: 0 0, -42.65px 0, 100% -42.65px, 0 100%; }
+to { background-position: 0 -42.65px, 0 0, 100% 0, -42.65px 100%; }
+}
+
+@keyframes pulsate {
+    100% {
+        box-shadow:
+        0 0 4px #fff,
+        0 0 11px #fff,
+        0 0 10px #fff,
+        0 0 12px #97ce4c,
+        0 0 13px #97ce4c,
+        0 0 12px #97ce4c,
+        0 0 14px #97ce4c,
+        0 0 15px #97ce4c;
+    }
+    0% {
+        box-shadow:
+        0 0 2px #fff,
+        0 0 4px #fff,
+        0 0 6px #fff,
+        0 0 1px #97ce4c,
+        0 0 12px #97ce4c,
+        0 0 13px #97ce4c,
+        0 0 11px #97ce4c,
+        0 0 15px #97ce4c;
+    }
+}
+
+.backgroundImg::-webkit-scrollbar {
+    display: none;
+}
+ */
