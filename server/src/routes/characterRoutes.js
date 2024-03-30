@@ -1,7 +1,9 @@
 const { Router } = require("express");
 
-const characterRouter = Router();
+const { getCharacterByIdHandler } = require("../handlers/characterHandlers");
 
-router.get("/character/:id", getCharById);
+const charactersRouter = Router();
 
-module.exports = { characterRouter };
+charactersRouter.get("/:id", getCharacterByIdHandler);
+
+module.exports = { charactersRouter };
