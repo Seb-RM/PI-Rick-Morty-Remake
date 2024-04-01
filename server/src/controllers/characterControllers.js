@@ -7,7 +7,6 @@ const getCharacterById = async (id) => {
         `https://rickandmortyapi.com/api/character/${id}`
     );
 
-    console.log(data)
     const character = {
         id,
         name: data.name,
@@ -25,5 +24,5 @@ const getCharacterById = async (id) => {
 };
 
 module.exports = {
-  getCharacterById,
+    getCharacterById,
 };
