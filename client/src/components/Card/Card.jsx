@@ -9,20 +9,13 @@ import { useDispatch, useSelector } from "react-redux";
 
 import styles from "./Card.module.css";
 
-  let card ={
-  id: 1,
-  name: nombre,
-  userId:1,
-}
-
-
 const Card = (
   {
-  id=1,
-  name="nombre",
+  id,
+  name,
   image,
   onClose,
-  userId=1,
+  userId,
 }
 ) => {
   const dispatch = useDispatch();
@@ -84,7 +77,7 @@ const Card = (
 };
 
 Card.propTypes = {
-  id: PropTypes.number,
+  id: PropTypes.string,
   name: PropTypes.string,
   status: PropTypes.string,
   species: PropTypes.string,

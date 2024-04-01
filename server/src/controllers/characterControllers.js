@@ -1,13 +1,13 @@
 const axios = require("axios");
 
-const getCharacterById = async (request, response) => {
+const getCharacterById = async (id) => {
 
     try {
-    const { id } = request.params;
     const { data } = await axios.get(
         `https://rickandmortyapi.com/api/character/${id}`
     );
 
+    console.log(data)
     const character = {
         id,
         name: data.name,
@@ -18,7 +18,7 @@ const getCharacterById = async (request, response) => {
         species: data.species,
     };
 
-    return response.status(200).json(character);
+    return character;
     } catch (error) {
         return response.status(500).send(error.message);
     }

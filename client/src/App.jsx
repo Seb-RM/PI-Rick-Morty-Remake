@@ -64,7 +64,7 @@ function App() {
       );
     } else {
       try {
-        const { data } = await axios(`${API_URL}/character/${id}`);
+        const { data } = await axios(`${API_URL}/characters/${id}`);
 
         if (data.name) {
           setCharacters((oldChars) => [...oldChars, data]);
