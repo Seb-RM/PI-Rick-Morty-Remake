@@ -47,7 +47,6 @@ const Card = (
   }, [myFavorites, id]);
 
   return (
-    <div className={styles.cartas}>
       <div className={styles.card}>
         {pathname !== "/favorites" ? (
           <button onClick={() => onClose(id)} className={styles.btnClose}>
@@ -56,7 +55,7 @@ const Card = (
         ) : (
           ""
         )}
-        <div>
+        <div className={styles.imgContainer}>
           <img src={image} alt="`${name}`" className={styles.imagen} />
           {isFav ? (
             <button onClick={handleFavorite} className={styles.addFav}>
@@ -72,7 +71,6 @@ const Card = (
           <h2>{name}</h2>
         </Link>
       </div>
-    </div>
   );
 };
 
