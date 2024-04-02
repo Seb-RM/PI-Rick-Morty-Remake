@@ -18,7 +18,7 @@ function App() {
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
-  const [characters, setCharacters] = useState([]);
+  const [characters, setCharacters] = useLocalStorage("characters", []);
 
   const [access, setAccess] = useState(true);
 
@@ -58,23 +58,19 @@ function App() {
   };
 
   const onSearch = async (id) => {
-    console.log(characterSet);
+
     if (characterSet.has(id)) {
       window.alert(
         "¡Este personaje ya se encuentra seleccionado, intenta otra vez!"
       );
     } else {
       try {
-        const storedCharacters =
-          JSON.parse(localStorage.getItem("characters")) || [];
+    
         const { data } = await axios(`${API_URL}/characters/${id}`);
 
         if (data.name) {
-          const updatedCharacters = [...storedCharacters, data];
-          localStorage.setItem(
-            "characters",
-            JSON.stringify(updatedCharacters)
-          );
+          const updatedCharacters = [...characters, data];
+
           setCharacters(updatedCharacters);
           setCharacterSet(
             (prevCharacterSet) => new Set([...prevCharacterSet, id])
