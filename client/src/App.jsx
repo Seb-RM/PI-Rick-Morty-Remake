@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useLocalStorage } from "././utils/useLocalStorage.js";
 
 import axios from "axios";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
@@ -17,11 +18,11 @@ function App() {
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
-    const [characters, setCharacters] = useState([]);
+  const [characters, setCharacters] = useState([]);
 
-    const [access, setAccess] = useState(true);
+  const [access, setAccess] = useState(true);
 
-    const [userId, setUserId] = useState(0);
+  const [userId, setUserId] = useState(0);
 
 
   useEffect(() => {
@@ -64,10 +65,17 @@ function App() {
       );
     } else {
       try {
+        const storedCharacters =
+          JSON.parse(localStorage.getItem("characters")) || [];
         const { data } = await axios(`${API_URL}/characters/${id}`);
 
         if (data.name) {
-          setCharacters((oldChars) => [...oldChars, data]);
+          const updatedCharacters = [...storedCharacters, data];
+          localStorage.setItem(
+            "characters",
+            JSON.stringify(updatedCharacters)
+          );
+          setCharacters(updatedCharacters);
           setCharacterSet(
             (prevCharacterSet) => new Set([...prevCharacterSet, id])
           );
