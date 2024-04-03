@@ -12,7 +12,11 @@ export default (data)=> {
 
     if(!/\d/.test(data.password)) errors.p1 = 'La contraseña debe tener por lo menos un número!';
 
-    if(data.password.length < 6 || data.password.length > 10) errors.p2 = 'La contraseña debe tener una longitud entre 6 y 10 caracteres'
+    if(data.password.length < 6 || data.password.length > 10) errors.p2 = 'La contraseña debe tener entre 6 y 10 caracteres'
+
+    if (data.password !== data.repeatPassword) {
+        errors.repeatPassword = "Las contraseñas no coinciden.";
+    }
 
     return errors;
 };

@@ -1,0 +1,132 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 300px;
+    width: 230px;
+    position: relative;
+    padding: 2px 0;
+    z-index: 0;
+    overflow: hidden;
+    border-radius: 5px;
+    background-image: linear-gradient(
+                            125deg,
+                            hsl(201deg 33% 65%) 0%,
+                            hsl(203deg 32% 60%) 18%,
+                            hsl(204deg 32% 55%) 26%,
+                            hsl(205deg 32% 50%) 33%,
+                            hsl(203deg 39% 58%) 39%,
+                            hsl(201deg 48% 66%) 44%,
+                            hsl(199deg 64% 75%) 50%,
+                            hsl(200deg 51% 71%) 56%,
+                            hsl(201deg 41% 68%) 61%,
+                            hsl(201deg 33% 65%) 67%,
+                            hsl(203deg 32% 60%) 74%,
+                            hsl(204deg 32% 55%) 82%,
+                            hsl(205deg 32% 50%) 100%
+                        );
+    box-shadow: 7px 7px 14px 0px rgba(7,71,96,0.74);
+    border: 0.5px #92c5dd solid;
+}
+
+.card:hover::after { 
+    content: '';
+    top: 0;
+    transform: translateX(100%) rotate(30deg);
+    width: 300%;
+    height: 300%;
+    position: absolute;
+    z-index: 1;
+    animation: shine 3s infinite ease-in;
+    animation-delay: 0.5s;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.8) 50%, rgba(128, 186, 232, 0) 99%, rgba(128, 186, 232, 0) 100%);
+}
+
+@keyframes shine {
+        0% {
+            transform: translateX(-100%) translateY(-100%) rotate(30deg);
+    }
+    80% {
+        transform: translateX(-100%) translateY(-100%) rotate(30deg);
+	}
+    100% {
+        transform: translateX(100%) translateY(100%) rotate(30deg);
+	}
+}
+.imgContainer {
+    margin-top: 3px;
+    width: 90%;
+}
+.imagen {
+    width: 100%;
+    max-height: 250px;
+    height: 100%;
+    position: relative;
+    border-radius: .3rem;
+    z-index: 3;
+    box-shadow: 1px 1px 1px 1px rgba(7,71,96,0.75),-1px -1px 1px 1px rgba(7,71,96,0.75);
+}
+
+.addFav {
+    z-index: 3;
+    position: relative;
+    bottom: 80px;
+    right: -160px;
+    border: none;
+    margin: 0 !important;
+    font-size: 1.8rem;
+    cursor: pointer;
+    font-weight: 600;
+    background: transparent;
+    text-shadow: 2px 2px 2px rgba(255,255,255,0.6);
+    z-index: 5;
+}
+
+.btnClose {
+    position: relative;
+    font-size: 1.2rem;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    color: 	#5a5c6d;
+    font-weight: 550;
+    text-shadow: 0px -0px 3px #fafd7c;
+    transition: 0s ease;
+    z-index: 3;
+}
+
+.btnClose:hover{
+    color: 	#fafd7c;;
+    font-weight: 700;
+    text-shadow: 1px 1px 10px #63cbfb;
+}
+
+.card a{
+    text-decoration: none;
+}
+
+.card h2:hover{
+    color: #f9e009;
+    text-shadow: 3px 3px 2px rgba(14, 124, 36, 0.6),-3px -3px 2px rgba(14, 124, 36, 0.6);
+    background: radial-gradient(circle, rgb(162, 38, 234) 35%, rgb(51, 198, 181) 95%)
+}
+
+.card h2{
+    font-size: 1.2rem;
+    z-index: 3;
+    max-width: 185px;
+    max-height: 1.3rem;
+    white-space: nowrap;
+    text-wrap: nowrap;
+    overflow: hidden;
+    position: absolute;
+    top: 83%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: 	rgb(212, 217, 117);
+    text-align: center;
+    font-weight: 600;
+    text-shadow: 3px 3px 2px rgba(50, 3, 72, 0.9),-3px -3px 2px rgba(50, 3, 72, 0.9);
+    background: radial-gradient(circle, #5f9d09 85%, #35c9dd 15%);
+    border-radius: 5px;
+}
