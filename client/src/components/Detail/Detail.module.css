@@ -1,0 +1,105 @@
+@font-face{
+    font-family:  FlyingBird;
+    src: url('../../assets/fonts/FlyingBird-Yz9Ga.otf')
+}
+@font-face{
+    font-family:  HappyMonkey;
+    src: url('../../assets/fonts/HappyMonkey-Regular.ttf')
+}
+.detailContainer{
+    height: 76%;
+    padding: 35px 20px;
+}
+
+.contenedor {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.backgroundImg {
+    height: 100%;
+    overflow: auto;
+    border-radius: 15px;
+    backdrop-filter: blur(7.8px);
+    animation: pulsate 1.5s infinite alternate;
+    border: 0.6rem double hsl(50, 50%, 100%);  
+    box-shadow: 0 0 .2rem #fff,
+                0 0 .2rem #fff,
+                0 0 12 #68ce4c,
+                0 0 0.8rem #64ce4c,
+                0 0 15 #4cce50,
+                inset 0 0 1.3rem #4cce50 
+}
+
+@keyframes pulsate {
+    100% {
+        box-shadow:
+        0 0 2px #fff,
+        0 0 5px #fff,
+        0 0 7px #fff,
+        0 0 12px #ccce4c,
+        0 0 13px #cebf4c,
+        0 0 12px rgb(206, 189, 76),
+        0 0 14px #cece4c,
+        0 0 15px #cec84c;
+    }
+    0% {
+        box-shadow:
+        0 0 2px #fff,
+        0 0 3px #fff,
+        0 0 4px #fff,
+        0 0 1px #bf4cce,
+        0 0 12px #ce4cc1,
+        0 0 13px #ce4cb0,
+        0 0 11px #ce4c91,
+        0 0 15px #ce4ca1;
+    }
+}
+
+.detalle {
+    height: 87%;
+    min-width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 25px;
+    color:#378aca;
+    font-size: 2rem;
+    margin: auto !important;
+    padding: 15px !important;
+    line-height: 3.6rem;
+    letter-spacing: 0.3rem;
+    text-shadow: -3px 1px 5px rgb(173, 35, 1);
+    border-top: 9px groove #5e9958;
+    border-bottom: 9px groove #5e9958;
+    background-color: rgba(51, 37, 21, 0.4);
+    border-radius: 18px;
+}
+
+.titulo {
+    text-decoration: wavy underline;
+    font-family: FlyingBird;
+    font-weight: 650;
+}
+
+.info {
+    text-decoration: none;
+    color: #4cce50;
+    font-family: HappyMonkey;
+}
+
+.contenedor img {
+    margin: auto !important;
+    padding: 10px !important;
+    height: 90%;
+    box-shadow:
+    -50px -50px 0 -45px #e75212,
+    50px 50px 0 -45px #b963c9;
+    border-top-left-radius: 18px;
+    border-bottom-right-radius: 18px;
+    background-color: rgba(160, 222, 213,0.3);
+}
+
+
+

@@ -5,9 +5,9 @@
     src: url('../../assets/fonts/SunnyspellsRegular-MV9ze.otf');
 }
 
-
-
-
+.navBar {
+    position: relative;
+}
 .contenedorUno {
     background-color:#1c3042;
     padding: 10px !important;

@@ -6,8 +6,8 @@ import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import Form from "./components/Form/Form.jsx";
 import Cards from "./components/Cards/Cards.jsx";
 import Nav from "./components/Nav/Nav";
+import Detail from "./components/Detail/Detail";
 // import About from "./components/About/About";
-// import Detail from "./components/Detail/Detail";
 // import Favorites from "./components/Favorites/Favorites";
 
 import "./App.css";
@@ -89,13 +89,13 @@ function App() {
     );
   };
 
+const routeParts = pathname.split("/");
 
   return (
-    <div className={`App ${pathname.slice(1)}`}>
+    <div className={`App ${routeParts[1]}`}>
       {pathname !== "/" && (
         <Nav onSearch={onSearch} personajeRandom={personajeRandom} />
       )}
-
       <Routes>
         <Route path="/" element={<Form login={login} />} />
         <Route
@@ -104,12 +104,10 @@ function App() {
             <Cards characters={characters} onClose={onClose} userId={userId} />
           }
         />
+        <Route path="/detail/:id" element={<Detail />} />
         {/* <Route path="/favorites" element={<Favorites />} />
         <Route path="/about" element={<About />} />
-        <Route
-          path="/detail/:id"
-          element={<Detail characters={characters} />}
-        /> */}
+         */}
       </Routes>
     </div>
   );
