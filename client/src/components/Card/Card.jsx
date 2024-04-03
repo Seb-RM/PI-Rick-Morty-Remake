@@ -56,7 +56,7 @@ const Card = (
           ""
         )}
         <div className={styles.imgContainer}>
-          <img src={image} alt="`${name}`" className={styles.imagen} />
+          <img src={image} alt="`${name}`" className={styles.imagen} loading="lazy"/>
           {isFav ? (
             <button onClick={handleFavorite} className={styles.addFav}>
               ❤️

@@ -70,7 +70,6 @@ function App() {
 
         if (data.name) {
           const updatedCharacters = [...characters, data];
-
           setCharacters(updatedCharacters);
           setCharacterSet(
             (prevCharacterSet) => new Set([...prevCharacterSet, id])
