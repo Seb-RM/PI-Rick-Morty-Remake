@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 .contenedor {
-    height: auto;
+    height: 65px;
     width: auto;
     padding: 8px !important;
     margin: 10px !important;
@@ -19,11 +19,11 @@
     align-items: center;
 }
 
-h5 {
+.contenedor h5 {
     color: #a9f3fd;
     font-family: cursive;
     font-weight: 520;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     text-decoration:  underline;
 }
 .select select {
