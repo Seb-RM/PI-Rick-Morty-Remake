@@ -1,4 +1,3 @@
-const sequelize = require('sequelize');
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
@@ -19,6 +18,10 @@ module.exports = (sequelize) => {
          password: {
             type: DataTypes.STRING,
             allowNull: false,
+         },
+         favorites: {
+            type: DataTypes.ARRAY(DataTypes.JSONB),
+            defaultValue: [],
          },
       },
       { timestamps: false }

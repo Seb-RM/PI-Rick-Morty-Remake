@@ -4,33 +4,33 @@ import { ADD_FAV, REMOVE_FAV, FILTER_CARDS, ORDER } from "./actions-types";
 
 const initialState = {
     myFavorites: [],
-    allCharacters: []
+    allFavorites: []
 }
-
+console.log(initialState.myFavorites)
 const reducer = (state=initialState, action) =>{
     switch(action.type){
         case ADD_FAV:
             return { ...state,
                     myFavorites: action.payload, 
-                    allCharacters: action.payload };
+                    allFavorites: action.payload };
         
         case REMOVE_FAV:
             return {
                 ...state,
                 myFavorites: action.payload,
-                allCharacters: action.payload,
+                allFavorites: action.payload,
             };
 
         case FILTER_CARDS:
             if (action.payload === "All")
                 return {
                 ...state,
-                myFavorites: state.allCharacters,
+                myFavorites: state.allFavorites,
                 };
-            const filteredCharacters = state.allCharacters.filter((char)=> char.gender === action.payload);
+            const filteredFavorites = state.allFavorites.filter((char)=> char.gender === action.payload);
             return{
                 ...state,
-                myFavorites: filteredCharacters
+                myFavorites: filteredFavorites
             }
 
         case ORDER:

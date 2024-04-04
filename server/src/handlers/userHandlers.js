@@ -15,8 +15,10 @@ const createUserHandler = async (req, res) => {
     } catch (error) {
         console.error("Error al procesar la creación de usuario: ", error);
             return res.status(500).json({
-            message: "Se produjo un error al procesar la creación de usuario.",
-        });
+                success: false,
+                message:
+                    "Se produjo un error al procesar la creación de usuario.",
+            });
     }
 };
 
