@@ -1,0 +1,87 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+.contenedor {
+    height: auto;
+    width: auto;
+    padding: 8px !important;
+    margin: 10px !important;
+    background-color: rgba(147, 31, 5, 0.7);
+    border-radius: 7px;
+    box-shadow: 3px 3px 10px 5px #bc64e4;
+    display: grid;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    justify-items: center;
+    align-items: center;
+}
+
+h5 {
+    color: #a9f3fd;
+    font-family: cursive;
+    font-weight: 520;
+    font-size: 1.1rem;
+    text-decoration:  underline;
+}
+.select select {
+    appearance: none;
+    outline: 10px red;
+    border: 0;
+    color: #373e9e;
+    box-shadow: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    overflow: hidden;
+    flex: 1;
+    padding: 0 1em !important;
+    color: #9549c4;
+    background-color: #b0ce85;
+    background-image: none;
+    cursor: pointer;
+}
+
+.select select::-ms-expand {
+    display: none;
+}
+
+.select {
+    position: relative;
+    display: flex;
+    width: 15em;
+    height: 3em;
+    border-radius: .25em;
+    overflow: hidden;
+}
+
+.select::after {
+    content: '\25BC';
+    position: absolute;
+    height: 90px;
+    color: #e06f3f;
+    top: 0;
+    right: 0;
+    padding: 1em;
+    background-color: #1ba8bb;
+    pointer-events: none;
+}
+
+.select:hover::after {
+    color: #f39c12;
+    animation: bounce 0.5s infinite;
+    
+}
+
+@keyframes bounce {
+    25% {
+        transform: translatey(-1px);
+    }
+    75% {
+        transform: translatey(-5px);
+    }
+} 
+
+
+

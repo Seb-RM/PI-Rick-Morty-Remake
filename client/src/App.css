@@ -9,3 +9,9 @@
     background-image: url(./assets/img/background-detail.jpg);
     background-size: 100% 100%;
 }
+
+.favorites{
+    height: 100vh;
+    background-image: url(./assets/img/background-favoritos.jpg);
+    background-size: 100% 100%;
+}
