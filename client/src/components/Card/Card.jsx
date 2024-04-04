@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-// import { addFav, removeFav } from "../../redux/actions";
+import { addFav, removeFav } from "../../redux/actions";
 
 import styles from "./Card.module.css";
 
@@ -13,6 +13,10 @@ const Card = (
   {
   id,
   name,
+  status,
+  species,
+  gender,
+  origin,
   image,
   onClose,
   userId,
@@ -24,17 +28,17 @@ const Card = (
   const { pathname } = useLocation();
   const [isFav, setIsFav] = useState(false);
 
+  console.log(myFavorites)
+  console.log(isFav);
   const handleFavorite = () => {
-    // isFAv? dispatch(removeFav(id)): dispatch(addFav());
-    //setIsFAv(!isFAv); esta es otra forma;
     if (isFav) {
       setIsFav(false);
-      // dispatch(removeFav(id));
+      dispatch(removeFav(id));
     } else {
       setIsFav(true);
-      // dispatch(
-      //   addFav({ id, name, status, species, gender, origin, image, onClose }, userId)
-      // );
+      dispatch(
+        addFav({ id, name, status, species, gender, origin, image, onClose }, userId)
+      );
     }
   };
 
@@ -58,11 +62,11 @@ const Card = (
         <div className={styles.imgContainer}>
           <img src={image} alt="`${name}`" className={styles.imagen} loading="lazy"/>
           {isFav ? (
-            <button onClick={handleFavorite} className={styles.addFav}>
+            <button onClick={()=>handleFavorite()} className={styles.addFav}>
               ❤️
             </button>
           ) : (
-            <button onClick={handleFavorite} className={styles.addFav}>
+            <button onClick={()=>handleFavorite()} className={styles.addFav}>
               🤍
             </button>
           )}
