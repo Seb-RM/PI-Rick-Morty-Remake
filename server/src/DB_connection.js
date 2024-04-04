@@ -12,8 +12,6 @@ UserModel(sequelize);
 
 const { User } = sequelize.models;
 
-
-
 module.exports = {
    User,
    conn: sequelize,
