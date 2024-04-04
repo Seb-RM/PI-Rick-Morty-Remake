@@ -21,7 +21,7 @@ server.use(express.json());
 
 server.use("/rickandmorty", mainRouter);
 
-conn.sync({ force: true }).then(() => {
+conn.sync({ alter: true }).then(() => {
   server.listen(PORT, () => {
     console.log("Servidor funcionando en: " + PORT);
   });

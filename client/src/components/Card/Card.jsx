@@ -20,7 +20,7 @@ const Card = (
 ) => {
   const dispatch = useDispatch();
   //const favorites = useSelector((state)=> state.myFavorites) otra forma
-  const myFavorites = useSelector((state) => state.allCharacters);
+  const myFavorites = useSelector((state) => state.allFavorites);
   const { pathname } = useLocation();
   const [isFav, setIsFav] = useState(false);
 
