@@ -2,7 +2,7 @@ const { addFavorite, getFavorites } = require("../controllers/favoritesControlle
 
 const addFavoriteHandler = async (req, res) => {
     try {
-        const { userId } = request.params;
+        const { userId } = req.params;
         const { success, message, favorites } = await addFavorite(req.body, userId);
         if (success) {
             res.status(200).json({ success, message, favorites });

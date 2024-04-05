@@ -5,7 +5,9 @@ const addFavorite = async (
     userId
     ) => {
     try {
+        console.log(userId)
         const user = await User.findByPk(userId);
+        console.log(user)
         if (!user) {
         return { success: false, message: "Usuario no encontrado." };
         }

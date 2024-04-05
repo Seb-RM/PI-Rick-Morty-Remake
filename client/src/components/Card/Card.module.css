@@ -53,11 +53,11 @@
         transform: translateX(100%) translateY(100%) rotate(30deg);
 	}
 }
-.imgContainer {
+.cardImgContainer {
     margin-top: 3px;
     width: 90%;
 }
-.imagen {
+.cardImgContainer .imagen {
     width: 100%;
     max-height: 250px;
     height: 100%;

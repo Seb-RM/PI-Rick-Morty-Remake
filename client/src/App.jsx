@@ -22,18 +22,24 @@ function App() {
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
+  const [userIdStored, setUserIdStored] = useLocalStorage("userIdStored", []);
+  const [storedFavorites, setStoredFavorites] = useLocalStorage("storedFavorites", []);
   const [characters, setCharacters] = useLocalStorage("characters", []);
-
   const [access, setAccess] = useState(true);
 
   const userId = useSelector((state) => state.userId);
-console.log(userId)
 
   useEffect(() => {
-    if (!access && pathname !== "/") {
+    const userId = userIdStored
+    if (userId) {
+      const userFavorites = storedFavorites || [];
+      dispatch(loginSuccess(userId, userFavorites));
+      setAccess(true);
+    } else if (!access && pathname !== "/") {
       navigate("/");
     }
-  }, [access, pathname, navigate]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [access, pathname, navigate, dispatch]);
 
   
   const login = async (userData) => {
@@ -42,6 +48,8 @@ console.log(userId)
       const { success, userId, userFavorites } = data;
       if (success) {
         dispatch(loginSuccess(userId, userFavorites)); 
+        setUserIdStored(userId);
+        setStoredFavorites(userFavorites)
         setAccess(success);
         navigate("/home");
       } else {
@@ -94,7 +102,6 @@ console.log(userId)
   };
 
 const routeParts = pathname.split("/");
-console.log(routeParts[1])
 
   return (
     <div className={`App ${routeParts[1]}`}>
@@ -106,13 +113,17 @@ console.log(routeParts[1])
         <Route
           path="/home"
           element={
-            <Cards characters={characters} onClose={onClose} userId={userId} />
+            <Cards
+              characters={characters}
+              onClose={onClose}
+              userId={userId}
+              setStoredFavorites={setStoredFavorites}
+            />
           }
         />
         <Route path="/detail/:id" element={<Detail />} />
-        <Route path="/favorites" element={<Favorites />} />
+        <Route path="/favorites" element={<Favorites setStoredFavorites={setStoredFavorites} />} />
         {/* <Route path="/about" element={<About />} /> */}
-        
       </Routes>
     </div>
   );

@@ -9,8 +9,7 @@ import { addFav, removeFav } from "../../redux/actions";
 
 import styles from "./Card.module.css";
 
-const Card = (
-  {
+const Card = ({
   id,
   name,
   status,
@@ -19,28 +18,16 @@ const Card = (
   origin,
   image,
   onClose,
-  userId,
-}
-) => {
+  setStoredFavorites,
+}) => {
   const dispatch = useDispatch();
   //const favorites = useSelector((state)=> state.myFavorites) otra forma
   const myFavorites = useSelector((state) => state.allFavorites);
+  console.log(myFavorites)
+  const userId = useSelector((state) => state.userId);
+
   const { pathname } = useLocation();
   const [isFav, setIsFav] = useState(false);
-
-  console.log(myFavorites)
-  console.log(isFav);
-  const handleFavorite = () => {
-    if (isFav) {
-      setIsFav(false);
-      dispatch(removeFav(id));
-    } else {
-      setIsFav(true);
-      dispatch(
-        addFav({ id, name, status, species, gender, origin, image, onClose }, userId)
-      );
-    }
-  };
 
   useEffect(() => {
     myFavorites?.forEach((fav) => {
@@ -48,33 +35,54 @@ const Card = (
         setIsFav(true);
       }
     });
-  }, [myFavorites, id]);
+    setStoredFavorites(myFavorites);
+  }, [myFavorites, id, setStoredFavorites]);
+
+  const handleFavorite = () => {
+    if (isFav) {
+      setIsFav(false);
+      dispatch(removeFav(id));
+    } else {
+      setIsFav(true);
+      dispatch(
+        addFav(
+          { id, name, status, species, gender, origin, image, onClose },
+          userId
+        )
+      );
+    }
+  };
 
   return (
-      <div className={styles.card}>
-        {pathname !== "/favorites" ? (
-          <button onClick={() => onClose(id)} className={styles.btnClose}>
-            <span>X</span>
+    <div className={styles.card}>
+      {pathname !== "/favorites" ? (
+        <button onClick={() => onClose(id)} className={styles.btnClose}>
+          <span>X</span>
+        </button>
+      ) : (
+        ""
+      )}
+      <div className={styles.cardImgContainer}>
+        <img
+          src={image}
+          alt="`${name}`"
+          className={styles.imagen}
+          loading="lazy"
+        />
+        {isFav ? (
+          <button onClick={() => handleFavorite()} className={styles.addFav}>
+            ❤️
           </button>
         ) : (
-          ""
+          <button onClick={() => handleFavorite()} className={styles.addFav}>
+            🤍
+          </button>
         )}
-        <div className={styles.imgContainer}>
-          <img src={image} alt="`${name}`" className={styles.imagen} loading="lazy"/>
-          {isFav ? (
-            <button onClick={()=>handleFavorite()} className={styles.addFav}>
-              ❤️
-            </button>
-          ) : (
-            <button onClick={()=>handleFavorite()} className={styles.addFav}>
-              🤍
-            </button>
-          )}
-        </div>
-        <Link to={`/detail/${id}`}>
-          <h2>{name}</h2>
-        </Link>
       </div>
+      <Link to={`/detail/${id}`}>
+        <h2>{name}</h2>
+      </Link>
+    </div>
   );
 };
 
@@ -87,7 +95,7 @@ Card.propTypes = {
   origin: PropTypes.string,
   image: PropTypes.string,
   onClose: PropTypes.func,
-  userId: PropTypes.number,
+  setStoredFavorites: PropTypes.func,
 };
 
 export default Card;
