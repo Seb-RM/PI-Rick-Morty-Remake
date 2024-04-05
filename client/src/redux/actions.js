@@ -1,6 +1,20 @@
-import { ADD_FAV, REMOVE_FAV, FILTER_CARDS, ORDER } from "./actions-types";
+import { ADD_FAV, REMOVE_FAV, FILTER_CARDS, ORDER, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT } from "./actions-types";
 
 // import axios from "axios";
+
+export const loginSuccess = (userId, userFavorites) => ({
+    type: LOGIN_SUCCESS,
+    payload: { userId, userFavorites },
+});
+
+export const loginFailure = (error) => ({
+    type: LOGIN_FAILURE,
+    payload: { error },
+});
+
+export const logout = () => ({
+    type: LOGOUT,
+});
 
 export const addFav = (character, userId) => async (dispatch) => {
     // const endpoint = `http://localhost:3001/rickandmorty/fav/${userId}`;

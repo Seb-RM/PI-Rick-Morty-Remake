@@ -22,7 +22,6 @@ const LoginForm = ({ login }) => {
         validation({ ...userData, [event.target.name]: event.target.value })
         );
     };
-
     const handleSubmit = (event) => {
         event.preventDefault();
         login(userData);
