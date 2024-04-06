@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import styles from "./SearchBar.module.css"
 
 export default function SearchBar({onSearch}) {
-    console.log(onSearch)
+    
     const [id, setId] = useState('');
 
     const handleChange = (event) => {

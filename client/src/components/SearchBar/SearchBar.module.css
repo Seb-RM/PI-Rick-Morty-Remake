@@ -32,8 +32,9 @@ input{
     border-radius: 3px;
 }
 
-::placeholder {
+.search input::placeholder {
     color: rgba(147, 31, 5);
+    font-weight: 550;
     opacity: 1
 }
 
