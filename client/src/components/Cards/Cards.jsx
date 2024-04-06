@@ -3,7 +3,7 @@ import Card from "../Card/Card.jsx";
 
 import styles from "./Cards.module.css";
 
-const Cards = ({ characters, onClose, userId }) => {
+const Cards = ({ characters, onClose, userId, setStoredFavorites }) => {
   return (
     <div className={styles.backgroundImg}>
       {characters.map((personaje) => {
@@ -19,6 +19,7 @@ const Cards = ({ characters, onClose, userId }) => {
             image={personaje.image}
             onClose={() => onClose(personaje.id)}
             userId={userId}
+            setStoredFavorites={setStoredFavorites}
           />
         );
       })}
@@ -30,6 +31,7 @@ Cards.propTypes = {
   characters: PropTypes.array,
   onClose: PropTypes.func,
   userId: PropTypes.number,
+  setStoredFavorites: PropTypes.func
 };
 
 export default Cards;

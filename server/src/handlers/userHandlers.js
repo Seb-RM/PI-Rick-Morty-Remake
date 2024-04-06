@@ -24,11 +24,11 @@ const createUserHandler = async (req, res) => {
 
 const loginUserHandler = async (req, res) => {
     try {
-        const { success, message, userId } = await loginUser(
+        const { success, message, userId, userFavorites } = await loginUser(
         req.body
         );
         if (success) {
-        res.status(200).json({ success, message, userId });
+        res.status(200).json({ success, message, userId, userFavorites });
         } else {
         res.status(401).json({ success, error: message });
         }

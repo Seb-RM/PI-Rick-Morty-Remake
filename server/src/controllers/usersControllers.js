@@ -72,6 +72,7 @@ const loginUser = async ({ email, password }) => {
             success: true,
             message: "Inicio de sesión exitoso.",
             userId: findUser.dataValues.id,
+            userFavorites: findUser.dataValues.favorites,
         };
 
     } catch (error) {

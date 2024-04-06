@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocalStorage } from "././utils/useLocalStorage.js";
+import { useDispatch, useSelector } from "react-redux";
+import { loginSuccess, loginFailure } from "./redux/actions.js";
 
 import axios from "axios";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
@@ -15,38 +17,48 @@ import "./App.css";
 const API_URL = "http://localhost:3001/rickandmorty";
 
 function App() {
+  const dispatch = useDispatch();
+
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
+  const [userIdStored, setUserIdStored] = useLocalStorage("userIdStored", []);
+  const [storedFavorites, setStoredFavorites] = useLocalStorage("storedFavorites", []);
   const [characters, setCharacters] = useLocalStorage("characters", []);
-
   const [access, setAccess] = useState(true);
 
-  const [userId, setUserId] = useState(0);
-
+  const userId = useSelector((state) => state.userId);
 
   useEffect(() => {
-    if (!access && pathname !== "/") {
+    const userId = userIdStored
+    if (userId) {
+      const userFavorites = storedFavorites || [];
+      dispatch(loginSuccess(userId, userFavorites));
+      setAccess(true);
+    } else if (!access && pathname !== "/") {
       navigate("/");
     }
-  }, [access, pathname, navigate]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [access, pathname, navigate, dispatch]);
 
   
   const login = async (userData) => {
     try {
-      const { email, password } = userData;
-      const { data } = await axios.get(`${API_URL}/login`, {
-        params: { email, password },
-      });
-
-      const { access, userId } = data;
-      setAccess(access);
-      setUserId(userId);
-
-      access && navigate("/home");
+      const { data } = await axios.post(`${API_URL}/users/login`, userData);
+      const { success, userId, userFavorites } = data;
+      if (success) {
+        dispatch(loginSuccess(userId, userFavorites)); 
+        setUserIdStored(userId);
+        setStoredFavorites(userFavorites)
+        setAccess(success);
+        navigate("/home");
+      } else {
+        dispatch(loginFailure("Inicio de sesión fallido"));
+      }
 
     } catch (error) {
       console.error("Error de inicio de sesión:", error.message);
+      dispatch(loginFailure("Error de inicio de sesión"));
     }
   };
 
@@ -90,7 +102,6 @@ function App() {
   };
 
 const routeParts = pathname.split("/");
-console.log(routeParts[1])
 
   return (
     <div className={`App ${routeParts[1]}`}>
@@ -102,13 +113,17 @@ console.log(routeParts[1])
         <Route
           path="/home"
           element={
-            <Cards characters={characters} onClose={onClose} userId={userId} />
+            <Cards
+              characters={characters}
+              onClose={onClose}
+              userId={userId}
+              setStoredFavorites={setStoredFavorites}
+            />
           }
         />
         <Route path="/detail/:id" element={<Detail />} />
-        <Route path="/favorites" element={<Favorites />} />
+        <Route path="/favorites" element={<Favorites setStoredFavorites={setStoredFavorites} />} />
         {/* <Route path="/about" element={<About />} /> */}
-        
       </Routes>
     </div>
   );
