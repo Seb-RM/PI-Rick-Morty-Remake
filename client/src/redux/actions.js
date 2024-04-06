@@ -1,4 +1,4 @@
-import { ADD_FAV, ADD_FAV_FAILURE, REMOVE_FAV, FILTER_CARDS, ORDER, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT } from "./actions-types";
+import { ADD_FAV, ADD_FAV_FAILURE, REMOVE_FAV, REMOVE_FAV_FAILURE, FILTER_CARDS, ORDER, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT } from "./actions-types";
 
 import axios from "axios";
 
@@ -25,7 +25,6 @@ export const addFav = (character, userId) => async (dispatch) => {
             type: ADD_FAV,
             payload: data.favorites,
         });
-        // localStorage.setItem("storedFavorites", JSON.stringify(data.favorites));
     } catch (error) {
         dispatch({
             type: ADD_FAV_FAILURE,
@@ -34,15 +33,22 @@ export const addFav = (character, userId) => async (dispatch) => {
     }
 };
 
-export const removeFav = (id) => async (dispatch) => {
-  // const endpoint = "http://localhost:3001/rickandmorty/fav/" + id;
-  // return async (dispatch) => {
-  //     const  {data} = await axios.delete(endpoint);
-    dispatch({
+export const removeFav = (id, userId) => async (dispatch) => {
+    try {
+        
+        const endpoint = `http://localhost:3001/rickandmorty/favorites/${userId}`;
+        const { data } = await axios.put(endpoint, {id});
+        
+        dispatch({
         type: REMOVE_FAV,
-        payload: data,
-    });
-  // };
+        payload: data.favorites,
+        });
+    } catch (error) {
+        dispatch({
+        type: REMOVE_FAV_FAILURE,
+        payload: error.message,
+        });
+    }
 };
 
 

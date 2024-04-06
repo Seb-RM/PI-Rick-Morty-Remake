@@ -5,11 +5,13 @@ const addFavorite = async (
     userId
     ) => {
     try {
-        console.log(userId)
         const user = await User.findByPk(userId);
-        console.log(user)
+
         if (!user) {
-        return { success: false, message: "Usuario no encontrado." };
+        return {
+            success: false,
+            message: "ID de Usuario no encontrada en la base de datos.",
+        };
         }
 
         const existingFavorites = user.favorites || [];
@@ -45,6 +47,49 @@ const addFavorite = async (
     }
 };
 
+const deleteFavorite= async (
+    { id },
+    userId
+) => {
+    try {
+        const user = await User.findByPk(userId);
+        if (!user) {
+        return { success: false, message: "ID de Usuario no encontrada en la base de datos." };
+        }
+
+        const existingFavorites = user.favorites || [];
+        const existingFavorite = existingFavorites.find(
+        (favorite) => favorite.id === id
+        );
+
+        if (!existingFavorite) {
+        return {
+            success: false,
+            message: "Este favorito no existe para este usuario.",
+        };
+        }
+
+        updatedFavorites = existingFavorites.filter(
+            (favorite) => favorite.id !== id
+        );
+
+        await user.update({ favorites: updatedFavorites });
+
+        return {
+        success: true,
+        message: "Favorito eliminado con éxito.",
+        favorites: updatedFavorites,
+        };
+    } catch (error) {
+        console.log(error);
+        return {
+        success: false,
+        message: "Se produjo un error al intentar eliminar un favorito.",
+        };
+    }
+};
+
+
 const getFavorites = async (userId) => {
     try {
         const user = await User.findByPk(userId);
@@ -70,4 +115,4 @@ const getFavorites = async (userId) => {
     }
 };
 
-module.exports = { addFavorite, getFavorites };
+module.exports = { addFavorite, deleteFavorite, getFavorites };

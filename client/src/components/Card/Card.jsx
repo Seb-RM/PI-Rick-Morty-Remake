@@ -41,7 +41,7 @@ const Card = ({
   const handleFavorite = () => {
     if (isFav) {
       setIsFav(false);
-      dispatch(removeFav(id));
+      dispatch(removeFav(id, userId));
     } else {
       setIsFav(true);
       dispatch(
@@ -55,13 +55,15 @@ const Card = ({
 
   return (
     <div className={styles.card}>
-      {pathname !== "/favorites" ? (
-        <button onClick={() => onClose(id)} className={styles.btnClose}>
-          <span>X</span>
-        </button>
-      ) : (
-        ""
-      )}
+      <div className={styles.buttonContainer}>
+        {pathname !== "/favorites" ? (
+          <button onClick={() => onClose(id)} className={styles.btnClose}>
+            <span>X</span>
+          </button>
+        ) : (
+          ""
+        )}
+      </div>
       <div className={styles.cardImgContainer}>
         <img
           src={image}

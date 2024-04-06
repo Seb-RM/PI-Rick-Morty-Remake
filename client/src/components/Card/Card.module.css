@@ -82,6 +82,10 @@
     z-index: 5;
 }
 
+.buttonContainer {
+    min-height: 1.rem;
+}
+
 .btnClose {
     position: relative;
     font-size: 1.2rem;

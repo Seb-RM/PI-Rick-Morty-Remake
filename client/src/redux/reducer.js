@@ -1,5 +1,5 @@
 /* eslint-disable no-case-declarations */
-import { ADD_FAV, REMOVE_FAV, FILTER_CARDS, ORDER, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT, ADD_FAV_FAILURE } from "./actions-types";
+import { ADD_FAV, REMOVE_FAV, FILTER_CARDS, ORDER, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT, ADD_FAV_FAILURE, REMOVE_FAV_FAILURE } from "./actions-types";
 
 
 const initialState = {
@@ -13,7 +13,6 @@ const initialState = {
 const reducer = (state=initialState, action) =>{
     switch (action.type) {
         case LOGIN_SUCCESS:
-            console.log(state.allFavorites)
             return {
             ...state,
             userId: action.payload.userId,
@@ -39,8 +38,6 @@ const reducer = (state=initialState, action) =>{
             };
 
         case ADD_FAV:
-            console.log(state.allFavorites);
-            console.log(action.payload)
             return {
             ...state,
             myFavorites: action.payload,
@@ -52,13 +49,18 @@ const reducer = (state=initialState, action) =>{
             ...state,
             error: action.payload,
             };
-            
+
         case REMOVE_FAV:
-            console.log(state.allFavorites)
             return {
             ...state,
             myFavorites: action.payload,
             allFavorites: action.payload,
+            };
+
+        case REMOVE_FAV_FAILURE:
+            return {
+            ...state,
+            error: action.payload,
             };
 
         case FILTER_CARDS:
@@ -82,20 +84,20 @@ const reducer = (state=initialState, action) =>{
                 if (a.name > b.name) return 1;
                 else return -1;
             });
-        } else if (action.payload === "D") {
+            } else if (action.payload === "D") {
             orderCopy.sort((a, b) => {
                 if (a.name < b.name) return 1;
                 else return -1;
             });
-        }
-        return {
+            }
+            return {
             ...state,
             myFavorites: orderCopy,
-        };
-        
+            };
+
         default:
             return {
-                state,
+            state,
             };
         }
     }
