@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { NavLink, useLocation } from "react-router-dom";
-// import SearchBar from "../SearchBar/SearchBar";
+import SearchBar from "../SearchBar/SearchBar";
 
 import styles from "./Nav.module.css";
 import logo from "../../assets/img/logo.png";
@@ -43,7 +43,7 @@ const Nav = ({ onSearch, personajeRandom }) => {
       </div>
       {isHomePage && (
         <div className={styles.contenedorDos}>
-          {/* <SearchBar onSearch={onSearch} onClick={personajeRandom} /> */}
+          <SearchBar onSearch={onSearch} onClick={personajeRandom} />
           <div>
             <label>Sí prefieres,también puedes.</label>
             <button onClick={personajeRandom}>

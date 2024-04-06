@@ -1,0 +1,61 @@
+@font-face{
+    font-family:  Sunny Spells;
+    src: url('../../fonts/SunnyspellsRegular-MV9ze.otf');
+}
+
+
+input{
+    all: unset;
+}
+
+.search{
+    color: #a9f3fd;
+    margin: 10px !important;
+    justify-content: center;
+    font-family: cursive;
+}
+
+.search label{
+    font-size: 1.1rem;
+    font-weight: 520;
+}
+
+.search input{
+    width: 300px;
+    margin-left: 5px !important;
+    margin-right: 5px !important;
+    padding-left: 5px !important;
+    background-color: rgba(192, 224, 228, 0.6);
+    color: #18890e;
+    font-family: cursive;
+    letter-spacing: 0;
+    border-radius: 3px;
+}
+
+::placeholder {
+    color: rgba(147, 31, 5);
+    opacity: 1
+}
+
+.search button{
+    border: none;
+    padding: 5px 15px!important;
+    border-radius: 18px;
+    font-family: Sunny Spells;
+    font-size: 1.3rem;
+    color: 	#464b96;
+    background-color: #7cbc6c;
+    box-shadow:0px 9px 5px 1px #0ca179;
+    cursor: pointer;
+}
+
+.search button:hover{
+    background-color: #319e34;
+    color: #a3a5ea;
+}
+
+.search button:active {
+    background-color: #daac4a;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}

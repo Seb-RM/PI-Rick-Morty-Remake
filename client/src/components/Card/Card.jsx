@@ -21,9 +21,7 @@ const Card = ({
   setStoredFavorites,
 }) => {
   const dispatch = useDispatch();
-  //const favorites = useSelector((state)=> state.myFavorites) otra forma
   const myFavorites = useSelector((state) => state.allFavorites);
-  console.log(myFavorites)
   const userId = useSelector((state) => state.userId);
 
   const { pathname } = useLocation();
