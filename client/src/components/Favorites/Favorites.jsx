@@ -11,10 +11,10 @@ const Favorites = ({ setStoredFavorites }) => {
 
   const dispatch = useDispatch();
   const handleOrder = (event) => {
-    console.log(event.target.value)
     dispatch(orderCards(event.target.value));
   };
   const handleFilter = (event) => {
+    console.log(event.target.value)
     dispatch(filterCards(event.target.value));
   };
   return (

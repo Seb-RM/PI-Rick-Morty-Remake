@@ -60,7 +60,6 @@ export const filterCards = (gender) => {
 };
 
 export const orderCards = (order) => {
-    console.log(order)
     return {
         type: ORDER,
         payload: order
