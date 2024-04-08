@@ -78,8 +78,10 @@ const reducer = (state=initialState, action) =>{
             };
 
         case ORDER:
-            let orderCopy = [...state.myFavorites];
+            let orderCopy = [...state.allFavorites];
+            
             if (action.payload === "A") {
+            
             orderCopy.sort((a, b) => {
                 if (a.name > b.name) return 1;
                 else return -1;
@@ -92,7 +94,7 @@ const reducer = (state=initialState, action) =>{
             }
             return {
             ...state,
-            myFavorites: orderCopy,
+            allFavorites: orderCopy,
             };
 
         default:
