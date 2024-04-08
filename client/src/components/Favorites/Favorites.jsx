@@ -8,12 +8,13 @@ import styles from './Favorites.module.css';
 
 const Favorites = ({ setStoredFavorites }) => {
   const myFavorites = useSelector((state) => state.allFavorites);
-console.log(myFavorites)
+
   const dispatch = useDispatch();
   const handleOrder = (event) => {
     dispatch(orderCards(event.target.value));
   };
   const handleFilter = (event) => {
+    console.log(event.target.value)
     dispatch(filterCards(event.target.value));
   };
   return (
@@ -22,8 +23,8 @@ console.log(myFavorites)
         <h5>Ordena tus personajes favoritos:</h5>
         <div className={styles.select}>
           <select name="order" id="order" onChange={handleOrder}>
-            <option value="A">Ascendent</option>
-            <option value="D">Descendent</option>
+            <option value="A">Ascendente</option>
+            <option value="D">Descendente</option>
           </select>
         </div>
         <div className={styles.select}>

@@ -67,19 +67,22 @@ const reducer = (state=initialState, action) =>{
             if (action.payload === "All")
             return {
                 ...state,
-                myFavorites: state.allFavorites,
+                allFavorites: state.myFavorites,
             };
             const filteredFavorites = state.allFavorites.filter(
             (char) => char.gender === action.payload
             );
+
             return {
             ...state,
-            myFavorites: filteredFavorites,
+            allFavorites: filteredFavorites,
             };
 
         case ORDER:
-            let orderCopy = [...state.myFavorites];
+            let orderCopy = [...state.allFavorites];
+            
             if (action.payload === "A") {
+            
             orderCopy.sort((a, b) => {
                 if (a.name > b.name) return 1;
                 else return -1;
@@ -92,7 +95,7 @@ const reducer = (state=initialState, action) =>{
             }
             return {
             ...state,
-            myFavorites: orderCopy,
+            allFavorites: orderCopy,
             };
 
         default:
