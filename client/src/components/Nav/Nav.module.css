@@ -8,6 +8,10 @@
 .navBar {
     position: relative;
 }
+
+.navLinks {
+    align-items: center;
+}
 .contenedorUno {
     background-color:#1c3042;
     padding: 10px !important;
@@ -132,3 +136,8 @@
     margin: 10px  0 0 30px !important;
     justify-self: center;
 }
+
+.exitContainer box-icon{
+    cursor: pointer;
+}
+

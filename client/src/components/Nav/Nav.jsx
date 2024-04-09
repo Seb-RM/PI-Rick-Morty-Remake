@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { NavLink, useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import SearchBar from "../SearchBar/SearchBar";
 
 import styles from "./Nav.module.css";
@@ -10,6 +11,10 @@ const Nav = ({ onSearch, personajeRandom }) => {
   const location = useLocation();
   const isHomePage = location.pathname === "/home";
   
+  const dispatch = useDispatch();
+  const handleLogout = () => {
+    
+  }
   return (
     <div className={styles.navBar}>
       <div className={styles.contenedorUno}>
@@ -39,6 +44,14 @@ const Nav = ({ onSearch, personajeRandom }) => {
             }>
             <button className={styles.btn1}>About</button>
           </NavLink>
+          <div className={styles.exitContainer} onClick={()=>handleLogout}>
+            <box-icon
+              name="exit"
+              color="rgb(218, 172, 74)"
+              size="25px"
+              animation="flashing-hover"
+              ></box-icon>
+          </div>
         </div>
       </div>
       {isHomePage && (

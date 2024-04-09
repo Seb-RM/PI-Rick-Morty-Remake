@@ -25,10 +25,11 @@ function App() {
   const [userIdStored, setUserIdStored] = useLocalStorage("userIdStored", []);
   const [storedFavorites, setStoredFavorites] = useLocalStorage("storedFavorites", []);
   const [characters, setCharacters] = useLocalStorage("characters", []);
-  const [access, setAccess] = useState(true);
-
+  const [access, setAccess] = useState(false);
+  console.log(access); 
   const userId = useSelector((state) => state.userId);
-
+  const guestUser = useSelector((state) => state.guestUser);
+  console.log(guestUser)
   useEffect(() => {
     const userId = userIdStored
     if (userId) {
@@ -101,7 +102,7 @@ function App() {
     );
   };
 
-const routeParts = pathname.split("/");
+  const routeParts = pathname.split("/");
 
   return (
     <div className={`App ${routeParts[1]}`}>
@@ -109,7 +110,10 @@ const routeParts = pathname.split("/");
         <Nav onSearch={onSearch} personajeRandom={personajeRandom} />
       )}
       <Routes>
-        <Route path="/" element={<Form login={login} />} />
+        <Route
+          path="/"
+          element={<Form login={login} setAccess={setAccess} />}
+        />
         <Route
           path="/home"
           element={
@@ -122,7 +126,10 @@ const routeParts = pathname.split("/");
           }
         />
         <Route path="/detail/:id" element={<Detail />} />
-        <Route path="/favorites" element={<Favorites setStoredFavorites={setStoredFavorites} />} />
+        <Route
+          path="/favorites"
+          element={<Favorites setStoredFavorites={setStoredFavorites} />}
+        />
         {/* <Route path="/about" element={<About />} /> */}
       </Routes>
     </div>
