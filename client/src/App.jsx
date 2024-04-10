@@ -31,8 +31,9 @@ function App() {
   const guestUser = useSelector((state) => state.guestUser);
   console.log(guestUser)
   useEffect(() => {
-    const userId = userIdStored
-    if (userId) {
+    const userId = userIdStored.length > 0 ? userIdStored : null;
+    console.log(userId)
+    if (userId !== null && userId !== undefined) {
       const userFavorites = storedFavorites || [];
       dispatch(loginSuccess(userId, userFavorites));
       setAccess(true);

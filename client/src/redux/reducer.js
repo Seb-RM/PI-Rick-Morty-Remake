@@ -37,6 +37,7 @@ const reducer = (state=initialState, action) =>{
           myFavorites: [],
           allFavorites: [],
           loggedIn: false,
+          guestUSer: false,
         };
 
       case GUEST_LOGIN:

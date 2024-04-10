@@ -1,7 +1,9 @@
 import PropTypes from "prop-types";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import SearchBar from "../SearchBar/SearchBar";
+
+import { logout } from "../../redux/actions"
 
 import styles from "./Nav.module.css";
 import logo from "../../assets/img/logo.png";
@@ -11,9 +13,15 @@ const Nav = ({ onSearch, personajeRandom }) => {
   const location = useLocation();
   const isHomePage = location.pathname === "/home";
   
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const handleLogout = () => {
-    
+
+    dispatch(logout());
+    localStorage.clear();
+    navigate("/");
+    console.log("Usuario desconectado");
   }
   return (
     <div className={styles.navBar}>
@@ -44,7 +52,7 @@ const Nav = ({ onSearch, personajeRandom }) => {
             }>
             <button className={styles.btn1}>About</button>
           </NavLink>
-          <div className={styles.exitContainer} onClick={()=>handleLogout}>
+          <div className={styles.exitContainer} onClick={()=>handleLogout()}>
             <box-icon
               name="exit"
               color="rgb(218, 172, 74)"
