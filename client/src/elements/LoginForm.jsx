@@ -105,12 +105,14 @@ const LoginForm = ({ login, setAccess }) => {
             {/* <button type="submit">Submit</button> */}
             <input type="submit" value="Ingresar" onClick={handleSubmit} />
           </div>
+          <div style={{ position: "relative" }}>
+            <button
+              className={styles.guestUserButton}
+              onClick={() => handleGuestLogin()}>
+              Ingresar como Invitado
+            </button>
+          </div>
         </form>
-        <div className={styles.guestUser}>
-          <button onClick={() => handleGuestLogin}>
-            Ingresar como Invitado
-          </button>
-        </div>
       </>
     );
 };

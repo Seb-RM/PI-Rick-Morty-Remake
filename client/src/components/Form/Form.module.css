@@ -142,10 +142,12 @@
 }
 
 .section .signin .formContainer {
+    position: relative;
     border-radius: 5px;
     box-shadow: 0px 18px 18px -12px #0f0;
 }
 .section .signin .form {
+    position: relative;
     margin-top: 15px;
     width: 100%;
     height: 330px;
@@ -239,12 +241,13 @@ input::placeholder {
     letter-spacing: 0.05em;
     cursor: pointer;
 }
-.guestUser {
-    position: relative;
-}
-.guestUser button{
-    position: relative;
-    top: 25px;
+
+.guestUserButton{
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 320px;
     padding: 5px 10px;
     color: #0f0;
     background-color: #222;
@@ -258,7 +261,7 @@ input::placeholder {
     border: 1px #0f0 solid;
 }
 
-.guestUser button:hover{
+.guestUserButton:hover{
     box-shadow: 1px -1px 15px 3px #0f0
 }
 
