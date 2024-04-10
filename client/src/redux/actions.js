@@ -1,4 +1,4 @@
-import { ADD_FAV, ADD_FAV_FAILURE, REMOVE_FAV, REMOVE_FAV_FAILURE, FILTER_CARDS, ORDER, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT } from "./actions-types";
+import { ADD_FAV, ADD_FAV_FAILURE, REMOVE_FAV, REMOVE_FAV_FAILURE, FILTER_CARDS, ORDER, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT, GUEST_LOGIN } from "./actions-types";
 
 import axios from "axios";
 
@@ -14,6 +14,11 @@ export const loginFailure = (error) => ({
 
 export const logout = () => ({
     type: LOGOUT,
+});
+
+export const loginGuestUser = (guestStatus) => ({
+    type: GUEST_LOGIN,
+    payload: guestStatus,
 });
 
 export const addFav = (character, userId) => async (dispatch) => {

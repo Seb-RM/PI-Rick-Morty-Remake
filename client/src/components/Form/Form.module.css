@@ -239,6 +239,28 @@ input::placeholder {
     letter-spacing: 0.05em;
     cursor: pointer;
 }
+.guestUser {
+    position: relative;
+}
+.guestUser button{
+    position: relative;
+    top: 25px;
+    padding: 5px 10px;
+    color: #0f0;
+    background-color: #222;
+    border: none;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 1.2em;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    border-radius: 4px;
+    border: 1px #0f0 solid;
+}
+
+.guestUser button:hover{
+    box-shadow: 1px -1px 15px 3px #0f0
+}
 
 input[type="submit"]:active{
     opacity: 0.6;
