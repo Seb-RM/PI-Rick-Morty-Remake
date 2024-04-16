@@ -29,14 +29,15 @@ function App() {
   console.log(access); 
   const userId = useSelector((state) => state.userId);
   const guestUser = useSelector((state) => state.guestUser);
-  console.log(guestUser)
+  console.log(userIdStored)
   useEffect(() => {
-    const userId = userIdStored.length > 0 ? userIdStored : null;
+    const userId = userIdStored ? userIdStored : null;
     console.log(userId)
     if (userId !== null && userId !== undefined) {
       const userFavorites = storedFavorites || [];
       dispatch(loginSuccess(userId, userFavorites));
       setAccess(true);
+      if(pathname==="/") navigate("/home");
     } else if (!access && pathname !== "/") {
       navigate("/");
     }
