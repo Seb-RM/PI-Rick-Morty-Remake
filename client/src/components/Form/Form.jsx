@@ -5,7 +5,7 @@ import RegistrationForm from "../../elements/RegistrationForm";
 import styles from "./Form.module.css";
 import PropTypes from "prop-types";
 
-const Form = ({ login }) => {
+const Form = ({ login, setAccess }) => {
 
   const [isLoginView, setIsLoginView] = useState(true);
 
@@ -110,7 +110,7 @@ const Form = ({ login }) => {
           </div>
           <div className={styles.formContainer}>
             {isLoginView ? (
-              <LoginForm login={login} toggleView={toggleView} />
+              <LoginForm login={login} toggleView={toggleView} setAccess={setAccess} />
             ) : (
               <RegistrationForm toggleView={toggleView} />
             )}
@@ -123,6 +123,7 @@ const Form = ({ login }) => {
 
 Form.propTypes = {
   login: PropTypes.func,
+  setAccess: PropTypes.func
 };
 
 export default Form;

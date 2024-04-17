@@ -26,17 +26,17 @@ function App() {
   const [storedFavorites, setStoredFavorites] = useLocalStorage("storedFavorites", []);
   const [characters, setCharacters] = useLocalStorage("characters", []);
   const [access, setAccess] = useState(false);
-  console.log(access); 
   const userId = useSelector((state) => state.userId);
-  const guestUser = useSelector((state) => state.guestUser);
-  console.log(guestUser)
+  const guestUSer = useSelector((state)=> state.guestUSer)
+
+console.log(guestUSer);
   useEffect(() => {
-    const userId = userIdStored.length > 0 ? userIdStored : null;
-    console.log(userId)
+    const userId = userIdStored.length !==0 ? userIdStored : null;
     if (userId !== null && userId !== undefined) {
       const userFavorites = storedFavorites || [];
       dispatch(loginSuccess(userId, userFavorites));
       setAccess(true);
+      if(pathname==="/") navigate("/home");
     } else if (!access && pathname !== "/") {
       navigate("/");
     }
@@ -108,12 +108,12 @@ function App() {
   return (
     <div className={`App ${routeParts[1]}`}>
       {pathname !== "/" && (
-        <Nav onSearch={onSearch} personajeRandom={personajeRandom} />
+        <Nav onSearch={onSearch} personajeRandom={personajeRandom} setAccess={setAccess} />
       )}
       <Routes>
         <Route
           path="/"
-          element={<Form login={login} setAccess={setAccess} />}
+          element={<Form login={login} setAccess={setAccess}/>}
         />
         <Route
           path="/home"
