@@ -16,7 +16,9 @@ const LoginForm = ({ login, setAccess }) => {
   const [errors, setErrors] = useState({});
   const [showPassword, setShowPassword] = useState(false);
 
+  // eslint-disable-next-line no-unused-vars
   const [userIdStored, setUserIdStored] = useLocalStorage("userIdStored", []);
+  // eslint-disable-next-line no-unused-vars
   const [storedFavorites, setStoredFavorites] = useLocalStorage(
     "storedFavorites",
     []

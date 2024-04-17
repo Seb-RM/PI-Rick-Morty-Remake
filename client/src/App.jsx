@@ -27,9 +27,9 @@ function App() {
   const [characters, setCharacters] = useLocalStorage("characters", []);
   const [access, setAccess] = useState(false);
   const userId = useSelector((state) => state.userId);
-  const guestUser = useSelector((state) => state.guestUser);
-  console.log(userIdStored.length !== 0);
-console.log(guestUser)
+  const guestUSer = useSelector((state)=> state.guestUSer)
+
+console.log(guestUSer);
   useEffect(() => {
     const userId = userIdStored.length !==0 ? userIdStored : null;
     if (userId !== null && userId !== undefined) {
@@ -41,7 +41,7 @@ console.log(guestUser)
       navigate("/");
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [access, pathname, navigate, dispatch, guestUser]);
+  }, [access, pathname, navigate, dispatch]);
 
   
   const login = async (userData) => {
