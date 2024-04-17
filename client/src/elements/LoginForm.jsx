@@ -3,41 +3,52 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import validation from "../utils/validation.js";
+import { loginGuestUser, loginSuccess } from "../redux/actions.js";
+import { useLocalStorage } from "../utils/useLocalStorage.js";
 
 import styles from "../components/Form/Form.module.css";
 
 const LoginForm = ({ login, setAccess }) => {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const [errors, setErrors] = useState({});
-    const [showPassword, setShowPassword] = useState(false);
+  const [errors, setErrors] = useState({});
+  const [showPassword, setShowPassword] = useState(false);
 
-    const [userData, setUserData] = useState({
-        email: "",
-        password: "",
+  const [userIdStored, setUserIdStored] = useLocalStorage("userIdStored", []);
+  const [storedFavorites, setStoredFavorites] = useLocalStorage(
+    "storedFavorites",
+    []
+  );
+
+  const [userData, setUserData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (event) => {
+    setUserData({
+    ...userData,
+    [event.target.name]: event.target.value,
     });
+    setErrors(
+    validation({ ...userData, [event.target.name]: event.target.value })
+    );
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    login(userData);
+  };
 
-    const [guestStatus, setGuestStatus] = useState(false)
-
-    const handleChange = (event) => {
-        setUserData({
-        ...userData,
-        [event.target.name]: event.target.value,
-        });
-        setErrors(
-        validation({ ...userData, [event.target.name]: event.target.value })
-        );
-    };
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        login(userData);
-    };
-
-    const handleGuestLogin = () => {
-        console.log("si si")
-    }
+  const handleGuestLogin = () => {
+    dispatch(loginSuccess( 1, []));
+    dispatch(loginGuestUser(true));
+    navigate("/home");
+    setUserIdStored(1);
+    setStoredFavorites([]);
+    setAccess(true);
+  }
 
     return (
       <>
@@ -119,6 +130,6 @@ const LoginForm = ({ login, setAccess }) => {
 
 LoginForm.propTypes = {
     login: PropTypes.func,
-    setAccess: PropTypes.func
+    setAccess: PropTypes.func,
 };
 export default LoginForm;

@@ -1,14 +1,13 @@
 import PropTypes from "prop-types";
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import SearchBar from "../SearchBar/SearchBar";
-
-import { logout } from "../../redux/actions"
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 
 import styles from "./Nav.module.css";
+import { logout } from "../../redux/actions"
 import logo from "../../assets/img/logo.png";
+import SearchBar from "../SearchBar/SearchBar";
 
-const Nav = ({ onSearch, personajeRandom }) => {
+const Nav = ({ onSearch, personajeRandom, setAccess }) => {
 
   const location = useLocation();
   const isHomePage = location.pathname === "/home";
@@ -17,9 +16,9 @@ const Nav = ({ onSearch, personajeRandom }) => {
   const dispatch = useDispatch();
 
   const handleLogout = () => {
-
     dispatch(logout());
     localStorage.clear();
+    setAccess(false)
     navigate("/");
     console.log("Usuario desconectado");
   }
@@ -80,6 +79,7 @@ const Nav = ({ onSearch, personajeRandom }) => {
 Nav.propTypes = {
   onSearch: PropTypes.func,
   personajeRandom: PropTypes.func,
+  setAccess: PropTypes.func
 };
 
 export default Nav;

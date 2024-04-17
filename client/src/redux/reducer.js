@@ -44,9 +44,7 @@ const reducer = (state=initialState, action) =>{
         console.log(action.payload)
         return {
           ...state,
-          userId: true,
           guestUSer: action.payload,
-          loggedIn: true,
         };
       case ADD_FAV:
         return {

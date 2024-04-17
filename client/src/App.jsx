@@ -26,13 +26,12 @@ function App() {
   const [storedFavorites, setStoredFavorites] = useLocalStorage("storedFavorites", []);
   const [characters, setCharacters] = useLocalStorage("characters", []);
   const [access, setAccess] = useState(false);
-  console.log(access); 
   const userId = useSelector((state) => state.userId);
   const guestUser = useSelector((state) => state.guestUser);
-  console.log(userIdStored)
+  console.log(userIdStored.length !== 0);
+console.log(guestUser)
   useEffect(() => {
-    const userId = userIdStored ? userIdStored : null;
-    console.log(userId)
+    const userId = userIdStored.length !==0 ? userIdStored : null;
     if (userId !== null && userId !== undefined) {
       const userFavorites = storedFavorites || [];
       dispatch(loginSuccess(userId, userFavorites));
@@ -42,7 +41,7 @@ function App() {
       navigate("/");
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [access, pathname, navigate, dispatch]);
+  }, [access, pathname, navigate, dispatch, guestUser]);
 
   
   const login = async (userData) => {
@@ -109,12 +108,12 @@ function App() {
   return (
     <div className={`App ${routeParts[1]}`}>
       {pathname !== "/" && (
-        <Nav onSearch={onSearch} personajeRandom={personajeRandom} />
+        <Nav onSearch={onSearch} personajeRandom={personajeRandom} setAccess={setAccess} />
       )}
       <Routes>
         <Route
           path="/"
-          element={<Form login={login} setAccess={setAccess} />}
+          element={<Form login={login} setAccess={setAccess}/>}
         />
         <Route
           path="/home"
