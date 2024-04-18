@@ -1,5 +1,5 @@
 /* eslint-disable no-case-declarations */
-import { ADD_FAV, REMOVE_FAV, FILTER_CARDS, ORDER, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT, GUEST_LOGIN, ADD_FAV_FAILURE, REMOVE_FAV_FAILURE } from "./actions-types";
+import { ADD_FAV, REMOVE_FAV, FILTER_CARDS, ORDER, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT, GUEST_LOGIN, ADD_FAV_FAILURE, REMOVE_FAV_FAILURE, ADD_GUEST_FAV, REMOVE_GUEST_FAV } from "./actions-types";
 
 
 const initialState = {
@@ -15,7 +15,12 @@ const reducer = (state=initialState, action) =>{
   switch (action.type) {
     case LOGIN_SUCCESS:
       return {
-        ...state
+        ...state,
+        userId: action.payload.userId,
+        myFavorites: action.payload.userFavorites,
+        allFavorites: action.payload.userFavorites,
+        loggedIn: true,
+        guestUSer: false
       };
     case LOGIN_FAILURE:
       return {
@@ -39,7 +44,7 @@ const reducer = (state=initialState, action) =>{
     case GUEST_LOGIN:
       return {
         ...state,
-        guestUSer: action.payload
+        guestUSer: action.payload,
       };
     case ADD_FAV:
       return {
@@ -100,7 +105,24 @@ const reducer = (state=initialState, action) =>{
         ...state,
         allFavorites: orderCopy,
       };
-      
+
+    case ADD_GUEST_FAV:
+      return {
+        ...state,
+        myFavorites: [...state.myFavorites, action.payload],
+        allFavorites: [...state.allFavorites, action.payload],
+      };
+
+    case REMOVE_GUEST_FAV:
+      const filteredGuestFavorites = state.myFavorites.filter(
+        (favorite) => favorite.id !== action.payload
+      );
+      return {
+        ...state,
+        myFavorites: filteredGuestFavorites,
+        allFavorites: filteredGuestFavorites,
+      };
+
     default:
       return {
         ...state,

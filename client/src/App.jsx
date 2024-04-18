@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { useLocalStorage } from "././utils/useLocalStorage.js";
 import { useDispatch, useSelector } from "react-redux";
@@ -25,11 +26,12 @@ function App() {
   const [userIdStored, setUserIdStored] = useLocalStorage("userIdStored", []);
   const [storedFavorites, setStoredFavorites] = useLocalStorage("storedFavorites", []);
   const [characters, setCharacters] = useLocalStorage("characters", []);
-  const [access, setAccess] = useState(false);
-  const userId = useSelector((state) => state.userId);
-  const guestUSer = useSelector((state)=> state.guestUSer)
 
-console.log(guestUSer);
+  const [access, setAccess] = useState(false);
+
+  const loggedIn = useSelector((state) => state.loggedIn);
+  const userId = useSelector((state) => state.userId);
+
   useEffect(() => {
     const userId = userIdStored.length !==0 ? userIdStored : null;
     if (userId !== null && userId !== undefined) {
@@ -48,6 +50,7 @@ console.log(guestUSer);
     try {
       const { data } = await axios.post(`${API_URL}/users/login`, userData);
       const { success, userId, userFavorites } = data;
+      console.log(userFavorites)
       if (success) {
         dispatch(loginSuccess(userId, userFavorites)); 
         setUserIdStored(userId);
@@ -65,6 +68,13 @@ console.log(guestUSer);
   };
 
   const [characterSet, setCharacterSet] = useState(new Set());
+
+  useEffect(()=>{
+    if(!loggedIn){
+      setCharacterSet(new Set());
+      setCharacters([]);
+    }
+  },[ loggedIn ]);
 
   const personajeRandom = () => {
     const randomId = Math.floor(Math.random() * 826) + 1;

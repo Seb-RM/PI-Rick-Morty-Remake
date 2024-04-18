@@ -1,4 +1,4 @@
-import { ADD_FAV, ADD_FAV_FAILURE, REMOVE_FAV, REMOVE_FAV_FAILURE, FILTER_CARDS, ORDER, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT, GUEST_LOGIN } from "./actions-types";
+import { ADD_FAV, ADD_FAV_FAILURE, REMOVE_FAV, REMOVE_FAV_FAILURE, FILTER_CARDS, ORDER, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT, GUEST_LOGIN, ADD_GUEST_FAV, REMOVE_GUEST_FAV } from "./actions-types";
 
 import axios from "axios";
 
@@ -69,4 +69,19 @@ export const orderCards = (order) => {
         type: ORDER,
         payload: order
     }
-}
+};
+
+export  const addGuestFav = (character) => (dispatch) => {
+    console.log(character)
+    dispatch({
+        type: ADD_GUEST_FAV,
+        payload: character,
+    });
+};
+
+export const removesGuestFav = (id) => (dispatch) => {
+    dispatch({
+        type: REMOVE_GUEST_FAV,
+        payload: id,
+    });
+};
