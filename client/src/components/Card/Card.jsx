@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { addFav, removeFav } from "../../redux/actions";
+import { addFav, addGuestFav, removeFav, removesGuestFav } from "../../redux/actions";
 
 import styles from "./Card.module.css";
 
@@ -23,7 +23,8 @@ const Card = ({
   const dispatch = useDispatch();
   const myFavorites = useSelector((state) => state.allFavorites);
   const userId = useSelector((state) => state.userId);
-
+  const guestUSer = useSelector((state) => state.guestUSer);
+console.log(myFavorites)
   const { pathname } = useLocation();
   const [isFav, setIsFav] = useState(false);
 
@@ -37,17 +38,30 @@ const Card = ({
   }, [myFavorites, id, setStoredFavorites]);
 
   const handleFavorite = () => {
-    if (isFav) {
-      setIsFav(false);
-      dispatch(removeFav(id, userId));
+
+    if(!guestUSer){
+      if (isFav) {
+        setIsFav(false);
+        dispatch(removeFav(id, userId));
+      } else {
+        setIsFav(true);
+        dispatch(
+          addFav(
+            { id, name, status, species, gender, origin, image, onClose },
+            userId
+          )
+        );
+      }
     } else {
-      setIsFav(true);
-      dispatch(
-        addFav(
-          { id, name, status, species, gender, origin, image, onClose },
-          userId
-        )
-      );
+      if (isFav) {
+        setIsFav(false);
+        dispatch(removesGuestFav(id));
+      } else {
+        setIsFav(true);
+        dispatch(
+          addGuestFav({id, name, status, species, gender, origin, image, onClose,})
+        );
+      }
     }
   };
 

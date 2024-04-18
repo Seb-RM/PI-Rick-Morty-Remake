@@ -14,7 +14,7 @@ const Nav = ({ onSearch, personajeRandom, setAccess }) => {
   
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+console.log(localStorage)
   const handleLogout = () => {
     dispatch(logout());
     localStorage.clear();
