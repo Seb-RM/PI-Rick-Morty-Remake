@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useLocalStorage } from "././utils/useLocalStorage.js";
 import { useDispatch, useSelector } from "react-redux";
 import { loginSuccess, loginFailure } from "./redux/actions.js";
+import { SimpleDialogContainer, simpleAlert } from 'react-simple-dialogs'
 
 import axios from "axios";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
@@ -31,6 +32,25 @@ function App() {
 
   const loggedIn = useSelector((state) => state.loggedIn);
   const userId = useSelector((state) => state.userId);
+
+  const repeatedCharacterAlert = () => simpleAlert( {message: "¡Este personaje ya se encuentra seleccionado, intenta otra vez!",
+    closeLabel: 'Ok, ya puedes cerrar.',
+    title: "Oops..."
+  })
+
+  const noCharacterAlert = () =>
+    simpleAlert({
+      message: "¡No hay personajes con este ID!",
+      closeLabel: "Mejor suerte la proxima vez.",
+      title: "Que mal!",
+    });
+
+  const errorAlert = () =>
+    simpleAlert({
+      message: error,
+      closeLabel: "Ok, ya puedes cerrar.",
+      title: "Oops...",
+  });
 
   useEffect(() => {
     const userId = userIdStored.length !==0 ? userIdStored : null;
@@ -84,9 +104,7 @@ function App() {
   const onSearch = async (id) => {
 
     if (characterSet.has(id)) {
-      window.alert(
-        "¡Este personaje ya se encuentra seleccionado, intenta otra vez!"
-      );
+      repeatedCharacterAlert()
     } else {
       try {
     
@@ -99,7 +117,8 @@ function App() {
             (prevCharacterSet) => new Set([...prevCharacterSet, id])
           );
         } else {
-          window.alert("¡No hay personajes con este ID!");
+          // window.alert("¡No hay personajes con este ID!");
+          noCharacterAlert();
         }
       } catch (error) {
         window.alert(error);
@@ -118,12 +137,21 @@ function App() {
   return (
     <div className={`App ${routeParts[1]}`}>
       {pathname !== "/" && (
-        <Nav onSearch={onSearch} personajeRandom={personajeRandom} setAccess={setAccess} />
+        <Nav
+          onSearch={onSearch}
+          personajeRandom={personajeRandom}
+          setAccess={setAccess}
+        />
       )}
+      <SimpleDialogContainer
+        primaryColor="#464b96"
+        primaryHoverColor="#a3a5ea"
+        color="#a3a5ea"
+      />
       <Routes>
         <Route
           path="/"
-          element={<Form login={login} setAccess={setAccess}/>}
+          element={<Form login={login} setAccess={setAccess} />}
         />
         <Route
           path="/home"
