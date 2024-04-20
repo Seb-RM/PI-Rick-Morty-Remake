@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-import Card from "../Card/Card.jsx";
 
+import Card from "../Card/Card.jsx";
 import styles from "./Cards.module.css";
 
 const Cards = ({ characters, onClose, userId, setStoredFavorites }) => {

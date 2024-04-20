@@ -16,9 +16,8 @@ export const logout = () => ({
     type: LOGOUT,
 });
 
-export const loginGuestUser = (guestStatus) => ({
+export const loginGuestUser = () => ({
     type: GUEST_LOGIN,
-    payload: guestStatus,
 });
 
 export const addFav = (character, userId) => async (dispatch) => {

@@ -1,11 +1,12 @@
 import { useState } from "react";
 
-import LoginForm from "../../elements/LoginForm";
-import RegistrationForm from "../../elements/RegistrationForm";
-import styles from "./Form.module.css";
 import PropTypes from "prop-types";
 
-const Form = ({ login, setAccess }) => {
+import styles from "./Form.module.css";
+import LoginForm from "../../elements/LoginForm";
+import RegistrationForm from "../../elements/RegistrationForm";
+
+const Form = ({ login, setAccess, setUserIdStored }) => {
 
   const [isLoginView, setIsLoginView] = useState(true);
 
@@ -110,7 +111,7 @@ const Form = ({ login, setAccess }) => {
           </div>
           <div className={styles.formContainer}>
             {isLoginView ? (
-              <LoginForm login={login} toggleView={toggleView} setAccess={setAccess} />
+              <LoginForm login={login} toggleView={toggleView} setAccess={setAccess} setUserIdStored={setUserIdStored} />
             ) : (
               <RegistrationForm toggleView={toggleView} />
             )}
@@ -123,7 +124,8 @@ const Form = ({ login, setAccess }) => {
 
 Form.propTypes = {
   login: PropTypes.func,
-  setAccess: PropTypes.func
+  setAccess: PropTypes.func,
+  setUserIdStored: PropTypes.func
 };
 
 export default Form;

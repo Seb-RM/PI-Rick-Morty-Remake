@@ -1,13 +1,12 @@
-import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { addFav, addGuestFav, removeFav, removesGuestFav } from "../../redux/actions";
-
 import styles from "./Card.module.css";
+import { addFav, addGuestFav, removeFav, removesGuestFav } from "../../redux/actions";
 
 const Card = ({
   id,
@@ -23,8 +22,7 @@ const Card = ({
   const dispatch = useDispatch();
   const myFavorites = useSelector((state) => state.allFavorites);
   const userId = useSelector((state) => state.userId);
-  const guestUSer = useSelector((state) => state.guestUSer);
-console.log(myFavorites)
+  const guestUser = useSelector((state) => state.guestUser);
   const { pathname } = useLocation();
   const [isFav, setIsFav] = useState(false);
 
@@ -38,8 +36,7 @@ console.log(myFavorites)
   }, [myFavorites, id, setStoredFavorites]);
 
   const handleFavorite = () => {
-
-    if(!guestUSer){
+    if(!guestUser){
       if (isFav) {
         setIsFav(false);
         dispatch(removeFav(id, userId));

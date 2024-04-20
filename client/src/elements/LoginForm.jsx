@@ -1,14 +1,16 @@
-import PropTypes from "prop-types";
 import { useState } from "react";
+
+import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import validation from "../utils/validation.js";
-import { loginGuestUser, loginSuccess } from "../redux/actions.js";
-import { useLocalStorage } from "../utils/useLocalStorage.js";
 
+import validation from "../utils/validation.js";
 import styles from "../components/Form/Form.module.css";
 
-const LoginForm = ({ login, setAccess }) => {
+import { useLocalStorage } from "../utils/useLocalStorage.js";
+import { loginGuestUser } from "../redux/actions.js";
+
+const LoginForm = ({ login, setAccess, setUserIdStored }) => {
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -16,8 +18,7 @@ const LoginForm = ({ login, setAccess }) => {
   const [errors, setErrors] = useState({});
   const [showPassword, setShowPassword] = useState(false);
 
-  // eslint-disable-next-line no-unused-vars
-  const [userIdStored, setUserIdStored] = useLocalStorage("userIdStored", []);
+
   // eslint-disable-next-line no-unused-vars
   const [storedFavorites, setStoredFavorites] = useLocalStorage(
     "storedFavorites",
@@ -44,8 +45,7 @@ const LoginForm = ({ login, setAccess }) => {
   };
 
   const handleGuestLogin = () => {
-    dispatch(loginSuccess( 1, []));
-    dispatch(loginGuestUser(true));
+    dispatch(loginGuestUser());
     navigate("/home");
     setUserIdStored(1);
     setStoredFavorites([]);
@@ -133,5 +133,6 @@ const LoginForm = ({ login, setAccess }) => {
 LoginForm.propTypes = {
     login: PropTypes.func,
     setAccess: PropTypes.func,
+    setUserIdStored: PropTypes.func
 };
 export default LoginForm;

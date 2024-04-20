@@ -20,7 +20,6 @@ const reducer = (state=initialState, action) =>{
         myFavorites: action.payload.userFavorites,
         allFavorites: action.payload.userFavorites,
         loggedIn: true,
-        guestUSer: false
       };
     case LOGIN_FAILURE:
       return {
@@ -38,13 +37,15 @@ const reducer = (state=initialState, action) =>{
         myFavorites: [],
         allFavorites: [],
         loggedIn: false,
-        guestUSer: false,
+        guestUser: false,
       };
 
     case GUEST_LOGIN:
       return {
         ...state,
-        guestUSer: action.payload,
+        userId: 1,
+        loggedIn: true,
+        guestUser: true,
       };
     case ADD_FAV:
       return {

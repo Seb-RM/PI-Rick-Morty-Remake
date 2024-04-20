@@ -1,9 +1,11 @@
 import { useState } from "react";
-import validation from "../utils/validation.js";
 
-import styles from "../components/Form/Form.module.css";
-import "boxicons";
 import axios from "axios";
+
+import validation from "../utils/validation.js";
+import styles from "../components/Form/Form.module.css";
+
+import "boxicons";
 
 const RegistrationForm = () => {
   const [errors, setErrors] = useState({});
