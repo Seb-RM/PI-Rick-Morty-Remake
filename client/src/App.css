@@ -15,3 +15,9 @@
     background-image: url(./assets/img/background-favoritos.jpg);
     background-size: 100% 100%;
 }
+
+.about{
+    height: 100vh;
+    background-image: url(./assets/img/background-about.png);
+    background-size: 100% 100%;
+}

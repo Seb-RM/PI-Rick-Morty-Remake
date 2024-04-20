@@ -12,7 +12,7 @@ import Cards from "./components/Cards/Cards.jsx";
 import Nav from "./components/Nav/Nav";
 import Detail from "./components/Detail/Detail";
 import Favorites from "./components/Favorites/Favorites";
-// import About from "./components/About/About";
+import About from "./components/About/About";
 
 import "./App.css";
 
@@ -36,10 +36,6 @@ function App() {
   closeLabel: 'Ok, ya puedes cerrar.',
   title: "Oops..."
 })
-console.log(userId);
-console.log(loggedIn)
-console.log(userIdStored);
-console.log(access);
 
   const noCharacterAlert = () =>
     simpleAlert({
@@ -50,7 +46,7 @@ console.log(access);
 
   useEffect(() => {
     const userId = userIdStored ? userIdStored : null;
-    console.log(userId );
+    
     if (userId !== null && userId !== undefined) {
       const userFavorites = storedFavorites || [];
       dispatch(loginSuccess(userId, userFavorites));
@@ -167,7 +163,7 @@ console.log(access);
           path="/favorites"
           element={<Favorites setStoredFavorites={setStoredFavorites} />}
         />
-        {/* <Route path="/about" element={<About />} /> */}
+        <Route path="/about" element={<About />} />
       </Routes>
     </div>
   );
