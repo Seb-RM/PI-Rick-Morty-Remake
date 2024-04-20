@@ -22,7 +22,7 @@ const Card = ({
   const dispatch = useDispatch();
   const myFavorites = useSelector((state) => state.allFavorites);
   const userId = useSelector((state) => state.userId);
-  const guestUSer = useSelector((state) => state.guestUSer);
+  const guestUser = useSelector((state) => state.guestUser);
   const { pathname } = useLocation();
   const [isFav, setIsFav] = useState(false);
 
@@ -36,8 +36,7 @@ const Card = ({
   }, [myFavorites, id, setStoredFavorites]);
 
   const handleFavorite = () => {
-
-    if(!guestUSer){
+    if(!guestUser){
       if (isFav) {
         setIsFav(false);
         dispatch(removeFav(id, userId));

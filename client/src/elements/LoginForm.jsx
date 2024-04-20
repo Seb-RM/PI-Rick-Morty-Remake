@@ -8,7 +8,7 @@ import validation from "../utils/validation.js";
 import styles from "../components/Form/Form.module.css";
 
 import { useLocalStorage } from "../utils/useLocalStorage.js";
-import { loginGuestUser, loginSuccess } from "../redux/actions.js";
+import { loginGuestUser } from "../redux/actions.js";
 
 const LoginForm = ({ login, setAccess, setUserIdStored }) => {
   const dispatch = useDispatch();
@@ -45,8 +45,7 @@ const LoginForm = ({ login, setAccess, setUserIdStored }) => {
   };
 
   const handleGuestLogin = () => {
-    dispatch(loginSuccess( 1, []));
-    dispatch(loginGuestUser(true));
+    dispatch(loginGuestUser());
     navigate("/home");
     setUserIdStored(1);
     setStoredFavorites([]);

@@ -33,7 +33,6 @@ function App() {
   
   const loggedIn = useSelector((state) => state.loggedIn);
   const userId = useSelector((state) => state.userId);
-  
   const repeatedCharacterAlert = () => simpleAlert( {message: "¡Este personaje ya se encuentra seleccionado, intenta otra vez!",
   closeLabel: 'Ok, ya puedes cerrar.',
   title: "Oops..."
