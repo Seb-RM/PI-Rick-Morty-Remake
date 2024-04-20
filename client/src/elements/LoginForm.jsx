@@ -8,7 +8,7 @@ import { useLocalStorage } from "../utils/useLocalStorage.js";
 
 import styles from "../components/Form/Form.module.css";
 
-const LoginForm = ({ login, setAccess }) => {
+const LoginForm = ({ login, setAccess, setUserIdStored }) => {
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -16,8 +16,7 @@ const LoginForm = ({ login, setAccess }) => {
   const [errors, setErrors] = useState({});
   const [showPassword, setShowPassword] = useState(false);
 
-  // eslint-disable-next-line no-unused-vars
-  const [userIdStored, setUserIdStored] = useLocalStorage("userIdStored", []);
+
   // eslint-disable-next-line no-unused-vars
   const [storedFavorites, setStoredFavorites] = useLocalStorage(
     "storedFavorites",
@@ -133,5 +132,6 @@ const LoginForm = ({ login, setAccess }) => {
 LoginForm.propTypes = {
     login: PropTypes.func,
     setAccess: PropTypes.func,
+    setUserIdStored: PropTypes.func
 };
 export default LoginForm;

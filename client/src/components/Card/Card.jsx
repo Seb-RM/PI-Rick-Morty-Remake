@@ -24,7 +24,6 @@ const Card = ({
   const myFavorites = useSelector((state) => state.allFavorites);
   const userId = useSelector((state) => state.userId);
   const guestUSer = useSelector((state) => state.guestUSer);
-console.log(myFavorites)
   const { pathname } = useLocation();
   const [isFav, setIsFav] = useState(false);
 

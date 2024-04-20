@@ -24,19 +24,22 @@ function App() {
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
-  const [userIdStored, setUserIdStored] = useLocalStorage("userIdStored", []);
+  const [userIdStored, setUserIdStored] = useLocalStorage("userIdStored", 0);
   const [storedFavorites, setStoredFavorites] = useLocalStorage("storedFavorites", []);
   const [characters, setCharacters] = useLocalStorage("characters", []);
-
   const [access, setAccess] = useState(false);
-
+  
   const loggedIn = useSelector((state) => state.loggedIn);
   const userId = useSelector((state) => state.userId);
-
+  
   const repeatedCharacterAlert = () => simpleAlert( {message: "¡Este personaje ya se encuentra seleccionado, intenta otra vez!",
-    closeLabel: 'Ok, ya puedes cerrar.',
-    title: "Oops..."
-  })
+  closeLabel: 'Ok, ya puedes cerrar.',
+  title: "Oops..."
+})
+console.log(userId);
+console.log(loggedIn)
+console.log(userIdStored);
+console.log(access);
 
   const noCharacterAlert = () =>
     simpleAlert({
@@ -45,15 +48,9 @@ function App() {
       title: "Que mal!",
     });
 
-  const errorAlert = () =>
-    simpleAlert({
-      message: error,
-      closeLabel: "Ok, ya puedes cerrar.",
-      title: "Oops...",
-  });
-
   useEffect(() => {
-    const userId = userIdStored.length !==0 ? userIdStored : null;
+    const userId = userIdStored ? userIdStored : null;
+    console.log(userId );
     if (userId !== null && userId !== undefined) {
       const userFavorites = storedFavorites || [];
       dispatch(loginSuccess(userId, userFavorites));
@@ -63,20 +60,20 @@ function App() {
       navigate("/");
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [access, pathname, navigate, dispatch]);
+  }, [access, pathname, navigate, dispatch, userIdStored]);
 
   
   const login = async (userData) => {
     try {
       const { data } = await axios.post(`${API_URL}/users/login`, userData);
       const { success, userId, userFavorites } = data;
-      console.log(userFavorites)
+
       if (success) {
         dispatch(loginSuccess(userId, userFavorites)); 
+        navigate("/home");
         setUserIdStored(userId);
         setStoredFavorites(userFavorites)
         setAccess(success);
-        navigate("/home");
       } else {
         dispatch(loginFailure("Inicio de sesión fallido"));
       }
@@ -141,6 +138,7 @@ function App() {
           onSearch={onSearch}
           personajeRandom={personajeRandom}
           setAccess={setAccess}
+          setUserIdStored={setUserIdStored}
         />
       )}
       <SimpleDialogContainer
@@ -151,7 +149,7 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Form login={login} setAccess={setAccess} />}
+          element={<Form login={login} setAccess={setAccess} setUserIdStored={setUserIdStored} />}
         />
         <Route
           path="/home"

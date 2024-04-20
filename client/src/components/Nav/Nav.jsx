@@ -7,19 +7,20 @@ import { logout } from "../../redux/actions"
 import logo from "../../assets/img/logo.png";
 import SearchBar from "../SearchBar/SearchBar";
 
-const Nav = ({ onSearch, personajeRandom, setAccess }) => {
+const Nav = ({ onSearch, personajeRandom, setAccess, setUserIdStored }) => {
 
   const location = useLocation();
   const isHomePage = location.pathname === "/home";
   
   const navigate = useNavigate();
   const dispatch = useDispatch();
-console.log(localStorage)
+
   const handleLogout = () => {
-    dispatch(logout());
     localStorage.clear();
-    setAccess(false)
+    setUserIdStored(0)
+    dispatch(logout());
     navigate("/");
+    setAccess(false)
     console.log("Usuario desconectado");
   }
   return (
@@ -79,7 +80,8 @@ console.log(localStorage)
 Nav.propTypes = {
   onSearch: PropTypes.func,
   personajeRandom: PropTypes.func,
-  setAccess: PropTypes.func
+  setAccess: PropTypes.func,
+  setUserIdStored: PropTypes.func
 };
 
 export default Nav;
