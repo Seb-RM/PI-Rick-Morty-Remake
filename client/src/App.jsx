@@ -1,18 +1,20 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
-import { useLocalStorage } from "././utils/useLocalStorage.js";
-import { useDispatch, useSelector } from "react-redux";
-import { loginSuccess, loginFailure } from "./redux/actions.js";
-import { SimpleDialogContainer, simpleAlert } from 'react-simple-dialogs'
 
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { simpleAlert, SimpleDialogContainer } from 'react-simple-dialogs'
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
-import Form from "./components/Form/Form.jsx";
-import Cards from "./components/Cards/Cards.jsx";
+
 import Nav from "./components/Nav/Nav";
-import Detail from "./components/Detail/Detail";
-import Favorites from "./components/Favorites/Favorites";
 import About from "./components/About/About";
+import Form from "./components/Form/Form.jsx";
+import Detail from "./components/Detail/Detail";
+import Cards from "./components/Cards/Cards.jsx";
+import Favorites from "./components/Favorites/Favorites";
+
+import { useLocalStorage } from "././utils/useLocalStorage.js";
+import { loginFailure, loginSuccess } from "./redux/actions.js";
 
 import "./App.css";
 

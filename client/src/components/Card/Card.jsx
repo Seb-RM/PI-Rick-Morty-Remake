@@ -1,13 +1,12 @@
-import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { addFav, addGuestFav, removeFav, removesGuestFav } from "../../redux/actions";
-
 import styles from "./Card.module.css";
+import { addFav, addGuestFav, removeFav, removesGuestFav } from "../../redux/actions";
 
 const Card = ({
   id,

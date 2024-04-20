@@ -1,9 +1,9 @@
-import { useSelector, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
-import Cards from "../Cards/Cards";
-import { orderCards,filterCards } from "../../redux/actions";
+import { useDispatch, useSelector } from "react-redux";
 
+import Cards from "../Cards/Cards";
 import styles from './Favorites.module.css';
+import { filterCards, orderCards } from "../../redux/actions";
 
 
 const Favorites = ({ setStoredFavorites }) => {

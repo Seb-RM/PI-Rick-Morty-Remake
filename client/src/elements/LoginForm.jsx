@@ -1,12 +1,14 @@
-import PropTypes from "prop-types";
 import { useState } from "react";
+
+import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import validation from "../utils/validation.js";
-import { loginGuestUser, loginSuccess } from "../redux/actions.js";
-import { useLocalStorage } from "../utils/useLocalStorage.js";
 
+import validation from "../utils/validation.js";
 import styles from "../components/Form/Form.module.css";
+
+import { useLocalStorage } from "../utils/useLocalStorage.js";
+import { loginGuestUser, loginSuccess } from "../redux/actions.js";
 
 const LoginForm = ({ login, setAccess, setUserIdStored }) => {
   const dispatch = useDispatch();

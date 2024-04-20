@@ -1,9 +1,10 @@
 import { useState } from "react";
 
+import PropTypes from "prop-types";
+
+import styles from "./Form.module.css";
 import LoginForm from "../../elements/LoginForm";
 import RegistrationForm from "../../elements/RegistrationForm";
-import styles from "./Form.module.css";
-import PropTypes from "prop-types";
 
 const Form = ({ login, setAccess, setUserIdStored }) => {
 
