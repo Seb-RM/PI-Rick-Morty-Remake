@@ -22,7 +22,7 @@ export const loginGuestUser = () => ({
 
 export const addFav = (character, userId) => async (dispatch) => {
     try {
-        const endpoint = `http://localhost:3001/rickandmorty/favorites/${userId}`;
+        const endpoint = `/favorites/${userId}`;
         const {data} = await axios.post(endpoint, character);
         console.log(data.favorites)
         dispatch({
@@ -40,7 +40,7 @@ export const addFav = (character, userId) => async (dispatch) => {
 export const removeFav = (id, userId) => async (dispatch) => {
     try {
         
-        const endpoint = `http://localhost:3001/rickandmorty/favorites/${userId}`;
+        const endpoint = `/favorites/${userId}`;
         const { data } = await axios.put(endpoint, {id});
         
         dispatch({

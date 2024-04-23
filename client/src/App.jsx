@@ -18,7 +18,7 @@ import { loginFailure, loginSuccess } from "./redux/actions.js";
 
 import "./App.css";
 
-const API_URL = "http://localhost:3001/rickandmorty";
+// const API_URL = "http://localhost:3001/rickandmorty";
 
 function App() {
   const dispatch = useDispatch();
@@ -62,7 +62,7 @@ function App() {
   
   const login = async (userData) => {
     try {
-      const { data } = await axios.post(`${API_URL}/users/login`, userData);
+      const { data } = await axios.post(`/users/login`, userData);
       const { success, userId, userFavorites } = data;
 
       if (success) {
@@ -102,7 +102,7 @@ function App() {
     } else {
       try {
     
-        const { data } = await axios(`${API_URL}/characters/${id}`);
+        const { data } = await axios(`/characters/${id}`);
 
         if (data.name) {
           const updatedCharacters = [...characters, data];

@@ -46,7 +46,7 @@ const RegistrationForm = () => {
     if (Object.keys(errors).length === 0) {
 
       try {
-        const endpoint = `http://localhost:3001/rickandmorty/users`;
+        const endpoint = `/users`;
         const { data } = await axios.post(endpoint, {
           email: userData.email,
           password: userData.password,

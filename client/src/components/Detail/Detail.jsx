@@ -5,14 +5,14 @@ import { useParams } from "react-router-dom";
 
 import styles from './Detail.module.css'
 
-const API_URL = "http://localhost:3001/rickandmorty";
+// const API_URL = "http://localhost:3001/rickandmorty";
 
 const Detail= ()=>{
     const {id} = useParams();
     const [character, setCharacter] = useState({});
 
     useEffect(() => {
-        axios(`${API_URL}/characters/${id}`).then(({ data }) => {
+        axios(`/characters/${id}`).then(({ data }) => {
             if (data.name) {
                 setCharacter(data);
             } else {
