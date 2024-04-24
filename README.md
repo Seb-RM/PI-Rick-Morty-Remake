@@ -64,8 +64,13 @@ Una vez completados los pasos anteriores, puedes ejecutar el proyecto localmente
 
 Para empezar a utilizar la aplicación, simplemente sigue estos pasos:
 
-1. **Registro e Inicio de Sesión**: Si eres un nuevo usuario, puedes registrarte utilizando el formulario de registro. Después de registrarte, inicia sesión con tus credenciales utilizando el formulario correspondiente.
+1. **Registro e Inicio de Sesión**: Si eres un nuevo usuario, puedes registrarte utilizando el formulario de registro.
+   
+   <img src="./screenshots/Captura-registro.PNG" alt="Imagen de la aplicación" width="800px">
 
-## Contacto
+   Después de registrarte, inicia sesión con tus credenciales utilizando el formulario correspondiente.
+   También tienes la opción de ingresar sin registrarte utilizando el botón 'Ingresar Como Invitado'.
+   
+   <img src="./screenshots/Captura-Login.PNG" alt="Imagen de la aplicación" width="800px">
 
-Información de contacto del desarrollador o equipo detrás del proyecto para preguntas, comentarios o colaboraciones.
+
