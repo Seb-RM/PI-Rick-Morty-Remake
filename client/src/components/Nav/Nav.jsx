@@ -7,22 +7,28 @@ import { logout } from "../../redux/actions"
 import logo from "../../assets/img/logo.png";
 import SearchBar from "../SearchBar/SearchBar";
 
-const Nav = ({ onSearch, personajeRandom, setAccess, setUserIdStored }) => {
-
+const Nav = ({
+  onSearch,
+  personajeRandom,
+  setAccess,
+  setUserIdStored,
+  setStoredFavorites,
+}) => {
   const location = useLocation();
   const isHomePage = location.pathname === "/home";
-  
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleLogout = () => {
+    setUserIdStored(0);
+    setStoredFavorites([]);
     localStorage.clear();
-    setUserIdStored(0)
     dispatch(logout());
     navigate("/");
-    setAccess(false)
+    setAccess(false);
     console.log("Usuario desconectado");
-  }
+  };
   return (
     <div className={styles.navBar}>
       <div className={styles.contenedorUno}>
@@ -52,13 +58,12 @@ const Nav = ({ onSearch, personajeRandom, setAccess, setUserIdStored }) => {
             }>
             <button className={styles.btn1}>About</button>
           </NavLink>
-          <div className={styles.exitContainer} onClick={()=>handleLogout()}>
+          <div className={styles.exitContainer} onClick={() => handleLogout()}>
             <box-icon
               name="exit"
               color="rgb(218, 172, 74)"
               size="25px"
-              animation="flashing-hover"
-              ></box-icon>
+              animation="flashing-hover"></box-icon>
           </div>
         </div>
       </div>
@@ -81,7 +86,8 @@ Nav.propTypes = {
   onSearch: PropTypes.func,
   personajeRandom: PropTypes.func,
   setAccess: PropTypes.func,
-  setUserIdStored: PropTypes.func
+  setUserIdStored: PropTypes.func,
+  setStoredFavorites: PropTypes.func,
 };
 
 export default Nav;
