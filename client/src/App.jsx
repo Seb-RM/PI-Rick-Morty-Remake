@@ -136,6 +136,7 @@ function App() {
           personajeRandom={personajeRandom}
           setAccess={setAccess}
           setUserIdStored={setUserIdStored}
+          setStoredFavorites={setStoredFavorites}
         />
       )}
       <SimpleDialogContainer
@@ -146,7 +147,13 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Form login={login} setAccess={setAccess} setUserIdStored={setUserIdStored} />}
+          element={
+            <Form
+              login={login}
+              setAccess={setAccess}
+              setUserIdStored={setUserIdStored}
+            />
+          }
         />
         <Route
           path="/home"
