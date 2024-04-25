@@ -73,4 +73,8 @@ Para empezar a utilizar la aplicación, simplemente sigue estos pasos:
    
    <img src="./screenshots/Captura-Login.PNG" alt="Imagen de la aplicación" width="800px">
 
+2. **Explora Personajes**: Una vez que hayas iniciado sesión, podrás explorar una amplia variedad de personajes de la serie "Rick and Morty" en la sección "Home".
+  
+  Utiliza la barra de búsqueda e ingresa un número entre 1 y 826 para agregar una tarjeta de personaje específico. También puedes utilizar el botón "Agregar un personaje aleatorio" para añadir una tarjeta de personaje al azar.
+
 
