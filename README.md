@@ -92,5 +92,19 @@ Para empezar a utilizar la aplicación, simplemente sigue estos pasos:
 
     <img src="./screenshots/Captura-Detalles.PNG" alt="Sección Detalle" width="800px">
 
+4. **Guardado de Favoritos**: Una vez que hayas agregado personajes a tu lista de favoritos, puedes acceder a ellos en la sección 'Favorites'.
+
+   <img src="./screenshots/Captura-Favoritos.PNG" alt="Sección Favoritos" width="800px">
+
+   En esta misma sección, encontrarás una barra con opciones para filtrar y ordenar las tarjetas.
+
+   <img src="./screenshots/Captura-Barra-Filtros.PNG" alt="Barra de Filtrado" width="800px">
+
+6. **Cerrar Sesión**: Cuando hayas terminado de usar la aplicación, haz clic en el botón ubicado en el extremo derecho de la barra de navegación para salir de la aplicación.
+
+   <img src="./screenshots/Captura-Barra-Navegacion.PNG" alt="Barra de Navegación" width="800px">
+
+   
+
 
 
