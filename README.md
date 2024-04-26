@@ -66,15 +66,31 @@ Para empezar a utilizar la aplicación, simplemente sigue estos pasos:
 
 1. **Registro e Inicio de Sesión**: Si eres un nuevo usuario, puedes registrarte utilizando el formulario de registro.
    
-   <img src="./screenshots/Captura-registro.PNG" alt="Imagen de la aplicación" width="800px">
+    <img src="./screenshots/Captura-registro.PNG" alt="Formulario de Registro" width="800px">
 
    Después de registrarte, inicia sesión con tus credenciales utilizando el formulario correspondiente.
    También tienes la opción de ingresar sin registrarte utilizando el botón 'Ingresar Como Invitado'.
    
-   <img src="./screenshots/Captura-Login.PNG" alt="Imagen de la aplicación" width="800px">
+    <img src="./screenshots/Captura-Login.PNG" alt="Formulario de Inicio de Sesión" width="800px">
 
 2. **Explora Personajes**: Una vez que hayas iniciado sesión, podrás explorar una amplia variedad de personajes de la serie "Rick and Morty" en la sección "Home".
+
+   <img src="./screenshots/Captura-Home.PNG" alt="Sección Home" width="800px">
   
-  Utiliza la barra de búsqueda e ingresa un número entre 1 y 826 para agregar una tarjeta de personaje específico. También puedes utilizar el botón "Agregar un personaje aleatorio" para añadir una tarjeta de personaje al azar.
+   Utiliza la barra de búsqueda e ingresa un número entre 1 y 826 para agregar una tarjeta de personaje específico. También puedes utilizar el botón "Agregar un personaje aleatorio" para         añadir una tarjeta de personaje al azar.
+
+    <img src="./screenshots/Captura-Barra-de-busqueda.PNG" alt="Barra de búsqueda" width="800px">
+
+3. **Tarjeta de Personaje**: Una vez que se haya agregado una tarjeta al panel principal, podrás manejarla con las siguientes opciones:
+
+      <img src="./screenshots/Captura-Tarjeta-de-Personaje.PNG" alt="Tarjeta de Personaje" width="300px">
+
+      * La "X" en la parte superior te permite eliminar una tarjeta del panel principal.
+      * Si te gusta el personaje que muestra la tarjeta, puedes agregarlo a tu lista de personajes favoritos utilizando el botón en forma de corazón. También puedes quitarlo de tu lista de 
+        favoritos utilizando el mismo botón.
+      * Además, puedes utilizar el nombre del personaje como un enlace a la sección "Details", que muestra los datos más destacados del personaje.
+
+    <img src="./screenshots/Captura-Detalles.PNG" alt="Sección Detalle" width="800px">
+
 
 
